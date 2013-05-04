@@ -200,5 +200,24 @@ namespace Tienda_Buceo_v1
             // Volvemos a dejar en false el boolean para mostrar el mensaje de error.
             mensajeError = false;
         }
+
+        private void button_agregarFoto_Click(object sender, EventArgs e)
+        {
+            //Prueba, sobra este codigo aqui:
+            // Iniciamos la conexion.
+                            conexion.Open();
+
+                            // Aqui hariamos la consulta.
+                            int id_ultimo_cliente = 0;
+                            sentenciaSQL = "SELECT MAX(id_cliente) AS Dato FROM sql27652.clientes;";
+                            comando = new MySqlCommand(sentenciaSQL, conexion);
+                            resultado = comando.ExecuteReader();
+                            if (resultado.Read())
+                            {
+                                id_ultimo_cliente = resultado.GetInt32(0) + 1;
+                                textBox_numCliente.Text = id_ultimo_cliente.ToString();
+                            }
+                            conexion.Close();
+        }
     }
 }

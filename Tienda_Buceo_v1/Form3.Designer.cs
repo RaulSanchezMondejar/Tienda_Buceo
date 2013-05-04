@@ -304,7 +304,7 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::Tienda_Buceo_v1.Properties.Resources._0;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 80);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(148, 139);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
