@@ -32,6 +32,7 @@ namespace Tienda_Buceo_v1
             InitializeComponent();
 
             formularioEntrada = F;
+
             // Creamos el formulario principal.
             formularioBusquedaCliente = new Form3(this);
 
@@ -42,11 +43,6 @@ namespace Tienda_Buceo_v1
         private void boton_Salir_Click(object sender, EventArgs e)
         {
             formularioEntrada.Close();
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void boton_busquedaCliente_Click(object sender, EventArgs e)
@@ -61,6 +57,13 @@ namespace Tienda_Buceo_v1
             Hide();
             formularioNuevoCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioNuevoCliente.Show();
+        }
+
+        private void button_cerrarSesion_Click(object sender, EventArgs e)
+        {
+            Hide();
+            formularioEntrada.StartPosition = FormStartPosition.CenterScreen;
+            formularioEntrada.Show();
         }
 
     }

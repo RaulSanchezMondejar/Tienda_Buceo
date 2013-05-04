@@ -60,9 +60,7 @@ namespace Tienda_Buceo_v1
                                 "; Port = " + formPantallaInicial.puertoConexion + ";";
                 conexion = new MySqlConnection(cadenaConexión);
             }
-            catch (Exception)
-            {
-            }
+            catch {}
 
         }
 

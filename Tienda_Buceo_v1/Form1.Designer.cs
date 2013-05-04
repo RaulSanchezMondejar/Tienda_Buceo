@@ -35,7 +35,7 @@
             this.boton_entrar = new System.Windows.Forms.Button();
             this.boton_salir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_errorUsuarioContrasena = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_usuario
@@ -105,14 +105,14 @@
             this.label1.Text = "Introducir Usuario";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // label_errorUsuarioContrasena
             // 
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(12, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 13);
-            this.label2.TabIndex = 7;
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_errorUsuarioContrasena.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_errorUsuarioContrasena.Location = new System.Drawing.Point(12, 101);
+            this.label_errorUsuarioContrasena.Name = "label_errorUsuarioContrasena";
+            this.label_errorUsuarioContrasena.Size = new System.Drawing.Size(260, 13);
+            this.label_errorUsuarioContrasena.TabIndex = 7;
+            this.label_errorUsuarioContrasena.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -121,7 +121,7 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(284, 168);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_errorUsuarioContrasena);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boton_salir);
             this.Controls.Add(this.boton_entrar);
@@ -145,7 +145,7 @@
         private System.Windows.Forms.Button boton_entrar;
         private System.Windows.Forms.Button boton_salir;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_errorUsuarioContrasena;
     }
 }
 

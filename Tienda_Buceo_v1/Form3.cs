@@ -38,6 +38,7 @@ namespace Tienda_Buceo_v1
 
             formPantallaInicial = F;
 
+            // Introducimos las siguientes campos.
             comboBox_titulacion.Items.Add("DISCOVERY SCUBA DIVER");
             comboBox_titulacion.Items.Add("OPEN WATER DIVER");
             comboBox_titulacion.Items.Add("ADVANCE OPEN WATER DIVER");
@@ -45,8 +46,7 @@ namespace Tienda_Buceo_v1
             comboBox_titulacion.Items.Add("DIVEMASTER");
             comboBox_titulacion.Items.Add("INSTRUCTOR");
 
-            ActiveControl = textBox_numCliente;
-
+            // Conexión contra servidor de Datos MySQL.
             try
             {
                 cadenaConexión = "Server = " + formPantallaInicial.nombreServidor +
@@ -54,13 +54,12 @@ namespace Tienda_Buceo_v1
                                 "; Uid = " + formPantallaInicial.nombreUsuario +
                                 "; Pwd = " + formPantallaInicial.contraseñaUsuario +
                                 "; Port = " + formPantallaInicial.puertoConexion + ";";
-                conexion = new MySqlConnection(cadenaConexión);
-                
+                conexion = new MySqlConnection(cadenaConexión);  
             }
-            catch (Exception)
-            {
-            }
-
+            catch {}
+            
+            // Marcamos como activo el campo de número Cliente.
+            ActiveControl = textBox_numCliente;
         }
 
         /*
@@ -106,7 +105,6 @@ namespace Tienda_Buceo_v1
         private void boton_Borrar_Click(object sender, EventArgs e)
         {
             borrarDatos();
-
         }
 
         private void boton_Buscar_Click(object sender, EventArgs e)
@@ -166,29 +164,27 @@ namespace Tienda_Buceo_v1
                 conexion.Close();
 
                 insertarFoto();
-
-               
             }
         }
 
         private void insertarFoto()
         {
-            int prueba;
+            int numeroClienteFoto;
             if (textBox_numCliente.Text == "")
             {
-                prueba = 0;
+                numeroClienteFoto = 0;
             }
             else
             {
-                prueba = Int32.Parse(textBox_numCliente.Text);
+                numeroClienteFoto = Int32.Parse(textBox_numCliente.Text);
             }
 
             try{
-                //pictureBox1.Image = new Bitmap(@"D:\Fotos\" + prueba + ".png");
-                pictureBox1.Image = new Bitmap(@"\Fotos\" + prueba + ".png");
+                pictureBox1.Image = new Bitmap(@"D:\Fotos\" + numeroClienteFoto + ".png");      
             }
-            catch {pictureBox1.Image = new Bitmap(@"\Fotos\0.png");} 
-            
+            catch {
+                pictureBox1.Image = new Bitmap(@"\Fotos\0.png");
+            }   
         }
     }
 }

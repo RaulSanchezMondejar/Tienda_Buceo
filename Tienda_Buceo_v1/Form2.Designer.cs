@@ -34,12 +34,15 @@
             this.boton_busquedaCompras = new System.Windows.Forms.Button();
             this.boton_nuevaCompra = new System.Windows.Forms.Button();
             this.label_usuario = new System.Windows.Forms.Label();
+            this.button_cerrarSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // boton_Salir
             // 
             this.boton_Salir.BackColor = System.Drawing.Color.DarkRed;
             this.boton_Salir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.boton_Salir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.boton_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_Salir.ForeColor = System.Drawing.Color.White;
             this.boton_Salir.Location = new System.Drawing.Point(680, 15);
@@ -129,6 +132,22 @@
             this.label_usuario.TabIndex = 5;
             this.label_usuario.Text = "Usuario: ";
             // 
+            // button_cerrarSesion
+            // 
+            this.button_cerrarSesion.BackColor = System.Drawing.Color.DarkRed;
+            this.button_cerrarSesion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_cerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button_cerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_cerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_cerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.button_cerrarSesion.Location = new System.Drawing.Point(546, 15);
+            this.button_cerrarSesion.Name = "button_cerrarSesion";
+            this.button_cerrarSesion.Size = new System.Drawing.Size(128, 25);
+            this.button_cerrarSesion.TabIndex = 6;
+            this.button_cerrarSesion.Text = "Cerrar Sesion";
+            this.button_cerrarSesion.UseVisualStyleBackColor = false;
+            this.button_cerrarSesion.Click += new System.EventHandler(this.button_cerrarSesion_Click);
+            // 
             // Form2
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -137,6 +156,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.button_cerrarSesion);
             this.Controls.Add(this.label_usuario);
             this.Controls.Add(this.boton_nuevaCompra);
             this.Controls.Add(this.boton_busquedaCompras);
@@ -150,7 +170,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form2";
             this.Text = "Tienda Buceo v1";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +183,6 @@
         private System.Windows.Forms.Button boton_busquedaCompras;
         private System.Windows.Forms.Button boton_nuevaCompra;
         public System.Windows.Forms.Label label_usuario;
+        private System.Windows.Forms.Button button_cerrarSesion;
     }
 }

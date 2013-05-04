@@ -26,14 +26,22 @@ namespace Tienda_Buceo_v1
             // Configuramos los eventos de teclado para poder utilizarlos.
             textBox_contrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
             textBox_usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+
+            // Marcamos como activo el cuadro de Introducción de usuario.
+            ActiveControl = textBox_usuario;
             
         }
-
+        /*
+         * Cuando pulsemos este botón llamara al método entrar.
+         */ 
         private void boton_entrar_Click(object sender, EventArgs e)
         {
             entrar();
         }
 
+        /*
+         * Cuando llamemos a este método, cerrara el programa.
+         */ 
         private void boton_salir_Click(object sender, EventArgs e)
         {
             Close();
@@ -52,22 +60,37 @@ namespace Tienda_Buceo_v1
             }
         }
 
+        /*
+         * Este método va a ser llamado cuando pulsemos el botón de Entrar.
+         * Lo que va a hacer es comprobar si el usuario y contraseña son correctos, y en el caso
+         * de asi serlo, nos llevara a la Pantalla Principal. De no ser asi, nos mostrara un
+         * mensaje de error en pantalla.
+         */ 
         private void entrar() 
         {
-            if (("root" == textBox_usuario.Text) && ("root" == textBox_contrasena.Text))
+            if (("root" == textBox_usuario.Text.ToLower()) && ("root" == textBox_contrasena.Text))
             {
+                /*
+                 * Si llegamos aqui es porque el usuario y contraseña son correctos.
+                 * Se oculta este formulario, y se abre el Formulario Principal.
+                 */
+                label_errorUsuarioContrasena.Text = "";
                 Hide();
                 formPantallaInicial.StartPosition = FormStartPosition.CenterScreen;
-                formPantallaInicial.label_usuario.Text = "Usuario: " + textBox_usuario.Text.ToString();
+                formPantallaInicial.label_usuario.Text = "Usuario: " + textBox_usuario.Text.ToLower().ToString();
                 formPantallaInicial.Show();
             }
             else
             {
-                label2.Text = "Usuario y/o Contraseña incorrecta";
-
+                // Si llegamos aqui es porque el usuario o contraseña no son correctos.
+                label_errorUsuarioContrasena.Text = "Usuario y/o Contraseña incorrecta";
             }
+            // Ponemos en blanco los campos de usuario y contraseña.
             textBox_usuario.Text = "";
             textBox_contrasena.Text = "";
+
+            // Marcamos como activo el cuadro de Introducción de usuario.
+            ActiveControl = textBox_usuario;
         }
     }
 }
