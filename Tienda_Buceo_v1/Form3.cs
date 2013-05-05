@@ -30,6 +30,8 @@ namespace Tienda_Buceo_v1
 
         // Resultado de la consulta.
         MySqlDataReader resultado;
+
+        ListViewItem item1;
     
 
         public Form3(Form2 F)
@@ -45,6 +47,16 @@ namespace Tienda_Buceo_v1
             comboBox_titulacion.Items.Add("RESCUE DIVER");
             comboBox_titulacion.Items.Add("DIVEMASTER");
             comboBox_titulacion.Items.Add("INSTRUCTOR");
+
+            // Configuramos los eventos de teclado para poder utilizarlos.
+            textBox_numCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_apellido1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_apellido2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_correoElectronico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_telefonoFijo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_telefonoMovil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            comboBox_titulacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
 
             // Conexión contra servidor de Datos MySQL.
             try
@@ -63,6 +75,21 @@ namespace Tienda_Buceo_v1
         }
 
         /*
+         * Este método nos va a permitir que cuando pulsemos el "Enter", sea lo mismo que pulsar el botón aceptar.
+         */
+        private void CheckKeys(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Escape)
+            {
+                // Si hemos llegado aquí es que hemos pulsado esa tecla.
+                Close();
+                borrarDatos();
+                formPantallaInicial.Show(); 
+            }
+        }
+
+
+        /*
          * Este método nos va a permitir dejar todos los canpos vacios.
          */ 
         private void borrarDatos() 
@@ -78,6 +105,7 @@ namespace Tienda_Buceo_v1
             comboBox_titulacion.Text = "";
 
             listView1.Items.Clear();
+            label2.Text = "";
 
             try
             {
@@ -97,7 +125,7 @@ namespace Tienda_Buceo_v1
 
         private void boton_cancelar_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
             borrarDatos();
             formPantallaInicial.Show();
         }
@@ -112,59 +140,136 @@ namespace Tienda_Buceo_v1
             // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
             textoAMayusculas();
 
-            // Iniciamos la conexion.
-            conexion.Open();
+            try {pictureBox1.Image = new Bitmap(@"\Fotos\0.png");}
+            catch{} 
 
             // Aqui hariamos la consulta.
-            sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE id_cliente LIKE 0" + textBox_numCliente.Text.ToString() + ";";
-
-
-            comando = new MySqlCommand(sentenciaSQL, conexion);
-            resultado = comando.ExecuteReader();
-
-            listView1.Items.Clear();
-
-            if (resultado.Read())
+            sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
+            Boolean masDeUnCampo = false;
+            foreach (Control x in this.Controls)
             {
+                if ((x is TextBox) || (x is ComboBox))
+                {
+                    String nombreCajaTexto = x.Name;
+                    String campo = obtenerValorCampo(x);
+                    String columna = "";
+                    Boolean esNumero = false;
+                    Console.WriteLine(">> Leyendo el campo: " + campo);
+                    if ((campo != "") && (campo != "-1"))
+                    {
+                        if (nombreCajaTexto.Equals("textBox_numCliente"))
+                        {
+                            columna = "id_cliente";
+                            esNumero = true;
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_nombre"))
+                        {
+                            columna = "nombre";
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_apellido1"))
+                        {
+                            columna = "apellido1";
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_apellido2"))
+                        {
+                            columna = "apellido2";
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_telefonoFijo"))
+                        {
+                            columna = "telefono_fijo";
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_telefonoMovil"))
+                        {
+                            columna = "telefono_movil";
+                        }
+                        else if (nombreCajaTexto.Equals("textBox_correoElectronico"))
+                        {
+                            columna = "correo_electronico";
+                        }
+                        else if (nombreCajaTexto.Equals("comboBox_titulacion"))
+                        {
+                            columna = "titulacion";
+                        }
 
-                ListViewItem item1 = new ListViewItem(resultado["id_cliente"].ToString());
-                item1.SubItems.Add(resultado["nombre"].ToString());
-                item1.SubItems.Add(resultado["apellido1"].ToString());
-                item1.SubItems.Add(resultado["apellido2"].ToString());
-                item1.SubItems.Add(resultado["telefono_fijo"].ToString());
-                item1.SubItems.Add(resultado["telefono_movil"].ToString());
-                item1.SubItems.Add(resultado["correo_electronico"].ToString());
-                item1.SubItems.Add(resultado["titulacion"].ToString());
+                        Console.WriteLine(">> Leyendo el campo: " + columna);
+                        if (masDeUnCampo)
+                        {
+                            sentenciaSQL += " AND ";
+                        }
+                        else
+                        {
+                            masDeUnCampo = true;
+                        }
 
-                /*
-                ListViewItem item2 = new ListViewItem(resultado["id_cliente"].ToString());
-                item2.SubItems.Add(resultado["nombre"].ToString());
-                item2.SubItems.Add(resultado["apellido1"].ToString());
-                item2.SubItems.Add(resultado["apellido2"].ToString());
-                item2.SubItems.Add(resultado["telefono_fijo"].ToString());
-                item2.SubItems.Add(resultado["telefono_movil"].ToString());
-                item2.SubItems.Add(resultado["correo_electronico"].ToString());
-                item2.SubItems.Add(resultado["titulacion"].ToString());
+                        if (esNumero)
+                        {
+                            sentenciaSQL += columna + " = " + campo;
+                        }
+                        else
+                        {
+                            sentenciaSQL += columna + " = '" + campo + "'";
+                        }
 
-                ListViewItem item3 = new ListViewItem(resultado["id_cliente"].ToString());
-                item3.SubItems.Add(resultado["nombre"].ToString());
-                item3.SubItems.Add(resultado["apellido1"].ToString());
-                item3.SubItems.Add(resultado["apellido2"].ToString());
-                item3.SubItems.Add(resultado["telefono_fijo"].ToString());
-                item3.SubItems.Add(resultado["telefono_movil"].ToString());
-                item3.SubItems.Add(resultado["correo_electronico"].ToString());
-                item3.SubItems.Add(resultado["titulacion"].ToString());
-
-
-
-                listView1.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
-                 */
-                listView1.Items.AddRange(new ListViewItem[] { item1});
-
-                conexion.Close();
-
-                insertarFoto();
+                    }
+                }
             }
+
+            try
+            {
+                // Iniciamos la conexion.
+                conexion.Open();
+                comando = new MySqlCommand(sentenciaSQL, conexion);
+                resultado = comando.ExecuteReader();
+                Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
+                listView1.Items.Clear();
+                int numResultados = 0;
+                while (resultado.Read())
+                {
+                    item1 = new ListViewItem(resultado["id_cliente"].ToString());
+                    item1.SubItems.Add(resultado["nombre"].ToString());
+                    item1.SubItems.Add(resultado["apellido1"].ToString());
+                    item1.SubItems.Add(resultado["apellido2"].ToString());
+                    item1.SubItems.Add(resultado["telefono_fijo"].ToString());
+                    item1.SubItems.Add(resultado["telefono_movil"].ToString());
+                    item1.SubItems.Add(resultado["correo_electronico"].ToString());
+                    item1.SubItems.Add(resultado["titulacion"].ToString());
+                    listView1.Items.AddRange(new ListViewItem[] { item1 });
+                    numResultados++;
+                }
+                if (numResultados > 0)
+                {
+                    label2.Text = "Se han encontrado los siguientes resultados:";
+                    if (numResultados == 1)
+                    {
+                        insertarFoto();
+                    }    
+                }
+                else
+                {
+                    label2.Text = "No se ha encontrado ningún resultado";
+                }
+                conexion.Close();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
+            }
+
+        }
+
+        //metodo para obtener el valor de un campo del formulario de tipo textBox o comboBox
+        public String obtenerValorCampo(Control x)
+        {
+            String campo;
+            if (x is TextBox)
+            {
+                campo = ((TextBox)x).Text;
+            }
+            else
+            {
+                campo = ((ComboBox)x).SelectedIndex.ToString();
+            }
+            return campo;
         }
 
         private void insertarFoto()
@@ -180,10 +285,12 @@ namespace Tienda_Buceo_v1
             }
 
             try{
-                pictureBox1.Image = new Bitmap(@"D:\Fotos\" + numeroClienteFoto + ".png");      
+                //pictureBox1.Image = new Bitmap(@"D:\Fotos\" + numeroClienteFoto + ".png");
+                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png");
+                
             }
             catch {
-                pictureBox1.Image = new Bitmap(@"\Fotos\0.png");
+                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
             }   
         }
     }

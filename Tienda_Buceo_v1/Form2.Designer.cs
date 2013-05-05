@@ -35,6 +35,14 @@
             this.boton_nuevaCompra = new System.Windows.Forms.Button();
             this.label_usuario = new System.Windows.Forms.Label();
             this.button_cerrarSesion = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busquedaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busquedaComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // boton_Salir
@@ -45,7 +53,7 @@
             this.boton_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_Salir.ForeColor = System.Drawing.Color.White;
-            this.boton_Salir.Location = new System.Drawing.Point(680, 15);
+            this.boton_Salir.Location = new System.Drawing.Point(649, 27);
             this.boton_Salir.Name = "boton_Salir";
             this.boton_Salir.Size = new System.Drawing.Size(75, 25);
             this.boton_Salir.TabIndex = 0;
@@ -63,7 +71,7 @@
             this.boton_busquedaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_busquedaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_busquedaCliente.ForeColor = System.Drawing.Color.White;
-            this.boton_busquedaCliente.Location = new System.Drawing.Point(26, 53);
+            this.boton_busquedaCliente.Location = new System.Drawing.Point(17, 65);
             this.boton_busquedaCliente.Name = "boton_busquedaCliente";
             this.boton_busquedaCliente.Size = new System.Drawing.Size(336, 231);
             this.boton_busquedaCliente.TabIndex = 1;
@@ -80,7 +88,7 @@
             this.boton_nuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.boton_nuevoCliente.ForeColor = System.Drawing.Color.White;
-            this.boton_nuevoCliente.Location = new System.Drawing.Point(419, 53);
+            this.boton_nuevoCliente.Location = new System.Drawing.Point(388, 65);
             this.boton_nuevoCliente.Name = "boton_nuevoCliente";
             this.boton_nuevoCliente.Size = new System.Drawing.Size(336, 231);
             this.boton_nuevoCliente.TabIndex = 2;
@@ -98,7 +106,7 @@
             this.boton_busquedaCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_busquedaCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.boton_busquedaCompras.ForeColor = System.Drawing.Color.White;
-            this.boton_busquedaCompras.Location = new System.Drawing.Point(26, 317);
+            this.boton_busquedaCompras.Location = new System.Drawing.Point(17, 329);
             this.boton_busquedaCompras.Name = "boton_busquedaCompras";
             this.boton_busquedaCompras.Size = new System.Drawing.Size(336, 231);
             this.boton_busquedaCompras.TabIndex = 3;
@@ -115,7 +123,7 @@
             this.boton_nuevaCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boton_nuevaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.boton_nuevaCompra.ForeColor = System.Drawing.Color.White;
-            this.boton_nuevaCompra.Location = new System.Drawing.Point(419, 317);
+            this.boton_nuevaCompra.Location = new System.Drawing.Point(388, 329);
             this.boton_nuevaCompra.Name = "boton_nuevaCompra";
             this.boton_nuevaCompra.Size = new System.Drawing.Size(336, 231);
             this.boton_nuevaCompra.TabIndex = 4;
@@ -126,7 +134,7 @@
             // 
             this.label_usuario.AutoSize = true;
             this.label_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_usuario.Location = new System.Drawing.Point(21, 12);
+            this.label_usuario.Location = new System.Drawing.Point(12, 24);
             this.label_usuario.Name = "label_usuario";
             this.label_usuario.Size = new System.Drawing.Size(98, 25);
             this.label_usuario.TabIndex = 5;
@@ -140,7 +148,7 @@
             this.button_cerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_cerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_cerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.button_cerrarSesion.Location = new System.Drawing.Point(546, 15);
+            this.button_cerrarSesion.Location = new System.Drawing.Point(515, 27);
             this.button_cerrarSesion.Name = "button_cerrarSesion";
             this.button_cerrarSesion.Size = new System.Drawing.Size(128, 25);
             this.button_cerrarSesion.TabIndex = 6;
@@ -148,13 +156,76 @@
             this.button_cerrarSesion.UseVisualStyleBackColor = false;
             this.button_cerrarSesion.Click += new System.EventHandler(this.button_cerrarSesion_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(748, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.busquedaClienteToolStripMenuItem,
+            this.nuevoClienteToolStripMenuItem,
+            this.modificarClienteToolStripMenuItem,
+            this.busquedaComprasToolStripMenuItem,
+            this.nuevaCompraToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.menuToolStripMenuItem.Text = "MENU";
+            // 
+            // busquedaClienteToolStripMenuItem
+            // 
+            this.busquedaClienteToolStripMenuItem.Name = "busquedaClienteToolStripMenuItem";
+            this.busquedaClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.busquedaClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.busquedaClienteToolStripMenuItem.Text = "Busqueda Cliente";
+            this.busquedaClienteToolStripMenuItem.Click += new System.EventHandler(this.busquedaClienteToolStripMenuItem_Click);
+            // 
+            // nuevoClienteToolStripMenuItem
+            // 
+            this.nuevoClienteToolStripMenuItem.Name = "nuevoClienteToolStripMenuItem";
+            this.nuevoClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.nuevoClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.nuevoClienteToolStripMenuItem.Text = "Nuevo Cliente";
+            this.nuevoClienteToolStripMenuItem.Click += new System.EventHandler(this.nuevoClienteToolStripMenuItem_Click);
+            // 
+            // modificarClienteToolStripMenuItem
+            // 
+            this.modificarClienteToolStripMenuItem.Name = "modificarClienteToolStripMenuItem";
+            this.modificarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.modificarClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.modificarClienteToolStripMenuItem.Text = "Modificar Cliente";
+            this.modificarClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarClienteToolStripMenuItem_Click);
+            // 
+            // busquedaComprasToolStripMenuItem
+            // 
+            this.busquedaComprasToolStripMenuItem.Name = "busquedaComprasToolStripMenuItem";
+            this.busquedaComprasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
+            this.busquedaComprasToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.busquedaComprasToolStripMenuItem.Text = "Busqueda Compras";
+            this.busquedaComprasToolStripMenuItem.Click += new System.EventHandler(this.busquedaComprasToolStripMenuItem_Click);
+            // 
+            // nuevaCompraToolStripMenuItem
+            // 
+            this.nuevaCompraToolStripMenuItem.Name = "nuevaCompraToolStripMenuItem";
+            this.nuevaCompraToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
+            this.nuevaCompraToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.nuevaCompraToolStripMenuItem.Text = "Nueva Compra";
+            this.nuevaCompraToolStripMenuItem.Click += new System.EventHandler(this.nuevaCompraToolStripMenuItem_Click);
+            // 
             // Form2
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(748, 585);
             this.ControlBox = false;
             this.Controls.Add(this.button_cerrarSesion);
             this.Controls.Add(this.label_usuario);
@@ -163,13 +234,17 @@
             this.Controls.Add(this.boton_nuevoCliente);
             this.Controls.Add(this.boton_busquedaCliente);
             this.Controls.Add(this.boton_Salir);
+            this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MaximumSize = new System.Drawing.Size(764, 624);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(764, 624);
             this.Name = "Form2";
             this.Text = "Tienda Buceo v1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +259,12 @@
         private System.Windows.Forms.Button boton_nuevaCompra;
         public System.Windows.Forms.Label label_usuario;
         private System.Windows.Forms.Button button_cerrarSesion;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busquedaClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busquedaComprasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaCompraToolStripMenuItem;
     }
 }

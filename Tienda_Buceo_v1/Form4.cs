@@ -31,10 +31,10 @@ namespace Tienda_Buceo_v1
         // Resultado de la consulta.
         MySqlDataReader resultado;
 
-        
-
         // El siguietne boolean lo vamos a utilizar para mostrar los mensajes de error.
         Boolean mensajeError = false;
+
+        Boolean imagenInsertada = false;
 
         public Form4(Form2 F)
         {
@@ -49,7 +49,15 @@ namespace Tienda_Buceo_v1
             comboBox_titulacion.Items.Add("DIVEMASTER");
             comboBox_titulacion.Items.Add("INSTRUCTOR");
 
-            ActiveControl = textBox_nombre;
+            // Configuramos los eventos de teclado para poder utilizarlos.
+            textBox_numCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_apellido1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_apellido2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_correoElectronico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_telefonoFijo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            textBox_telefonoMovil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
+            comboBox_titulacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
 
             try
             {
@@ -62,6 +70,24 @@ namespace Tienda_Buceo_v1
             }
             catch {}
 
+            hayarNumeroCliente();
+
+            ActiveControl = textBox_nombre;
+
+        }
+
+        /*
+         * Este método nos va a permitir que cuando pulsemos el "Enter", sea lo mismo que pulsar el botón aceptar.
+         */
+        private void CheckKeys(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Escape)
+            {
+                // Si hemos llegado aquí es que hemos pulsado esa tecla.
+                Hide();
+                borrarDatos();
+                formPantallaInicial.Show();
+            }
         }
 
         /*
@@ -85,12 +111,14 @@ namespace Tienda_Buceo_v1
             textBox_apellido2.BackColor = System.Drawing.SystemColors.Window;
 
             mensajeError = false;
+
+            pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
         }
 
 
         private void boton_cancelar_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
             borrarDatos();
             formPantallaInicial.Show();
         }
@@ -109,18 +137,18 @@ namespace Tienda_Buceo_v1
             textoAMayusculas();
             
 
-                if (textBox_nombre.Text != "")
+            if (textBox_nombre.Text != "")
+            {
+                if (textBox_apellido1.Text != "")
                 {
-                    if (textBox_apellido1.Text != "")
+                    if (textBox_apellido2.Text != "")
                     {
-                        if (textBox_apellido2.Text != "")
-                        {
-                            // Si hemos llegado hasta aqui, ejecutamos la sentencia SQL de INSERTAR.
-                            // Iniciamos la conexion.
-                            conexion.Open();
+                        // Si hemos llegado hasta aqui, ejecutamos la sentencia SQL de INSERTAR.
+                        // Iniciamos la conexion.
+                        conexion.Open();
 
-                            // Aqui hariamos la consulta.
-                            sentenciaSQL = "INSERT INTO sql27652.clientes VALUES (0," +
+                        // Aqui hariamos la consulta.
+                        sentenciaSQL = "INSERT INTO sql27652.clientes VALUES (0," +
                                 "'" + textBox_nombre.Text + "',"+
                                 "'" + textBox_apellido1.Text + "',"+
                                 "'" + textBox_apellido2.Text + "'," +
@@ -128,26 +156,28 @@ namespace Tienda_Buceo_v1
                                 "" + textBox_telefonoMovil.Text + "," +
                                 "'" + textBox_correoElectronico.Text + "'," +
                                 "null,null,1)";
-                            /*
-                             * Seria mejor pasarlo por String independientes, para en el caso de no poner
-                             * telefonos o lo que sea, ponerlo como null y pasarlo.
-                             * Algo asi:
-                             * if (textBox_telefonoMovil.Text.Equals("")) { textBox_telefonoMovil.Text = null; }
-                             */
 
 
-
-
-                            comando = new MySqlCommand(sentenciaSQL, conexion);
-                            comando.ExecuteNonQuery();
-
-                            conexion.Close();
+                        comando = new MySqlCommand(sentenciaSQL, conexion);
+                        comando.ExecuteNonQuery();
+                        conexion.Close();
                             
-                            // Mostramos un texto para informar de la operación.
-                            label_resultado.Text = "Usuario dado de alta correctamente";
-                        }
+                        // Mostramos un texto para informar de la operación.
+                        label_resultado.Text = "Usuario dado de alta correctamente";
+
+                        if (imagenInsertada == true)
+                        {
+                            try
+                            {
+                                pictureBox1.Image.Save(Application.StartupPath + "\\Fotos\\" + textBox_numCliente.Text + ".png");
+                                imagenInsertada = false;
+                            }
+                            catch { }
+
+                        }    
                     }
                 }
+            }
             pintarCeldasObligatoriasVacias();
         }
 
@@ -201,23 +231,44 @@ namespace Tienda_Buceo_v1
             mensajeError = false;
         }
 
+        private void hayarNumeroCliente (){
+            // Iniciamos la conexion.
+            conexion.Open();
+            // Aqui hariamos la consulta.
+            
+            sentenciaSQL = "SELECT MAX(id_cliente) AS Dato FROM sql27652.clientes;";
+            comando = new MySqlCommand(sentenciaSQL, conexion);
+            resultado = comando.ExecuteReader();
+            if (resultado.Read())
+            {
+                textBox_numCliente.Text = (resultado.GetInt32(0) + 1).ToString();
+            }
+            conexion.Close();
+        }
+
+
+
         private void button_agregarFoto_Click(object sender, EventArgs e)
         {
-            //Prueba, sobra este codigo aqui:
-            // Iniciamos la conexion.
-                            conexion.Open();
+            OpenFileDialog abrirFoto = new OpenFileDialog();
+            abrirFoto.Filter = "Archivos de Imagen|*.png";
+            abrirFoto.FileName = "";
+            abrirFoto.Title = "Añadir foto en formato PNG";
 
-                            // Aqui hariamos la consulta.
-                            int id_ultimo_cliente = 0;
-                            sentenciaSQL = "SELECT MAX(id_cliente) AS Dato FROM sql27652.clientes;";
-                            comando = new MySqlCommand(sentenciaSQL, conexion);
-                            resultado = comando.ExecuteReader();
-                            if (resultado.Read())
-                            {
-                                id_ultimo_cliente = resultado.GetInt32(0) + 1;
-                                textBox_numCliente.Text = id_ultimo_cliente.ToString();
-                            }
-                            conexion.Close();
+            if (abrirFoto.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Si esto se cumple, capturamos la propiedad File Name y la guardamos en el control
+                    String Direccion = abrirFoto.FileName;
+                    pictureBox1.ImageLocation = Direccion;
+                    imagenInsertada = true;  
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: No se ha podido leer el fichero del disco. Error Original: " + ex.Message);
+                }
+            }
         }
     }
 }

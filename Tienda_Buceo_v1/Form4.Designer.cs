@@ -47,10 +47,10 @@
             this.boton_nuevoUsuario = new System.Windows.Forms.Button();
             this.boton_cancelar = new System.Windows.Forms.Button();
             this.label_resultado = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox_numCliente = new System.Windows.Forms.TextBox();
             this.label_numCliente = new System.Windows.Forms.Label();
             this.button_agregarFoto = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,17 +227,6 @@
             this.label_resultado.TabIndex = 21;
             this.label_resultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = global::Tienda_Buceo_v1.Properties.Resources._0;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 139);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
             // textBox_numCliente
             // 
             this.textBox_numCliente.BackColor = System.Drawing.Color.Gainsboro;
@@ -267,6 +256,17 @@
             this.button_agregarFoto.Text = "Agregar Foto";
             this.button_agregarFoto.UseVisualStyleBackColor = true;
             this.button_agregarFoto.Click += new System.EventHandler(this.button_agregarFoto_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = global::Tienda_Buceo_v1.Properties.Resources._0;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 80);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(148, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // Form4
             // 

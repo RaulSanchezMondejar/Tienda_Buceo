@@ -58,6 +58,7 @@
             this.Correo_Electronico = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Titulacion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +160,7 @@
             // textBox_telefonoMovil
             // 
             this.textBox_telefonoMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_telefonoMovil.Location = new System.Drawing.Point(576, 144);
+            this.textBox_telefonoMovil.Location = new System.Drawing.Point(579, 144);
             this.textBox_telefonoMovil.Name = "textBox_telefonoMovil";
             this.textBox_telefonoMovil.Size = new System.Drawing.Size(181, 22);
             this.textBox_telefonoMovil.TabIndex = 12;
@@ -252,9 +253,9 @@
             this.Telefono_Movil,
             this.Correo_Electronico,
             this.Titulacion});
-            this.listView1.Location = new System.Drawing.Point(21, 266);
+            this.listView1.Location = new System.Drawing.Point(21, 289);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(739, 260);
+            this.listView1.Size = new System.Drawing.Size(739, 237);
             this.listView1.TabIndex = 22;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -311,6 +312,13 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(21, 263);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(736, 23);
+            this.label2.TabIndex = 24;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,6 +326,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.boton_cancelar);
@@ -382,5 +391,6 @@
         private System.Windows.Forms.ColumnHeader Correo_Electronico;
         private System.Windows.Forms.ColumnHeader Titulacion;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

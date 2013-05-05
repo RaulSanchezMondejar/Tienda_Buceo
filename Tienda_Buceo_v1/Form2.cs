@@ -15,6 +15,7 @@ namespace Tienda_Buceo_v1
         Form1 formularioEntrada;
         Form3 formularioBusquedaCliente;
         Form4 formularioNuevoCliente;
+        Form5 formularioSalir;
 
         /*
          * Declaramos las siguientes variables para la conexión a la BBDD, para que nos sea más cómodo su utilización.
@@ -33,28 +34,45 @@ namespace Tienda_Buceo_v1
 
             formularioEntrada = F;
 
-            // Creamos el formulario principal.
-            formularioBusquedaCliente = new Form3(this);
+            formularioSalir = new Form5(this);
 
-            // Creamos el formulario busqueda cliente.
-            formularioNuevoCliente = new Form4(this);
         }
 
-        private void boton_Salir_Click(object sender, EventArgs e)
+        public void salirAplicacion() 
         {
             formularioEntrada.Close();
         }
 
+        private void boton_Salir_Click(object sender, EventArgs e)
+        {
+            formularioSalir.StartPosition = FormStartPosition.CenterScreen;
+            formularioSalir.Show();
+        }
+
         private void boton_busquedaCliente_Click(object sender, EventArgs e)
         {
-            Hide();
-            formularioBusquedaCliente.StartPosition = FormStartPosition.CenterScreen;
-            formularioBusquedaCliente.Show();
+            busquedaCliente();    
         }
 
         private void boton_nuevoCliente_Click(object sender, EventArgs e)
         {
+            nuevoCliente();
+        }
+
+        private void busquedaCliente()
+        {
             Hide();
+            // Creamos el formulario principal.
+            formularioBusquedaCliente = new Form3(this);
+            formularioBusquedaCliente.StartPosition = FormStartPosition.CenterScreen;
+            formularioBusquedaCliente.Show();
+        }
+
+        private void nuevoCliente()
+        {
+            Hide();
+            // Creamos el formulario busqueda cliente.
+            formularioNuevoCliente = new Form4(this);
             formularioNuevoCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioNuevoCliente.Show();
         }
@@ -66,5 +84,29 @@ namespace Tienda_Buceo_v1
             formularioEntrada.Show();
         }
 
+        private void busquedaClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            busquedaCliente();  
+        }
+
+        private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nuevoCliente();
+        }
+
+        private void modificarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void busquedaComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

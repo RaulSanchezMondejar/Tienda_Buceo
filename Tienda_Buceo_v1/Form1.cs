@@ -16,6 +16,7 @@ namespace Tienda_Buceo_v1
         // Con este nombre llamaremos al formulario Pantalla Inicial.
         Form2 formPantallaInicial;
 
+
         public Form1()
         {
             InitializeComponent();
