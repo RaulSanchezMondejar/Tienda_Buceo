@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Buceo_v1
 {
-    partial class Form3
+    partial class FormClienteNuevo
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,6 @@
             this.label_apellido1 = new System.Windows.Forms.Label();
             this.textBox_apellido2 = new System.Windows.Forms.TextBox();
             this.label_apellido2 = new System.Windows.Forms.Label();
-            this.textBox_numCliente = new System.Windows.Forms.TextBox();
-            this.label_numCliente = new System.Windows.Forms.Label();
             this.textBox_telefonoFijo = new System.Windows.Forms.TextBox();
             this.label_telefonoFijo = new System.Windows.Forms.Label();
             this.textBox_telefonoMovil = new System.Windows.Forms.TextBox();
@@ -46,19 +44,13 @@
             this.label_titulacion = new System.Windows.Forms.Label();
             this.comboBox_titulacion = new System.Windows.Forms.ComboBox();
             this.boton_Borrar = new System.Windows.Forms.Button();
-            this.boton_Buscar = new System.Windows.Forms.Button();
+            this.boton_nuevoUsuario = new System.Windows.Forms.Button();
             this.boton_cancelar = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.Num_Cliente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Nombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Apellido1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Apellido2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Telefono_Fijo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Telefono_Movil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Correo_Electronico = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Titulacion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label_resultado = new System.Windows.Forms.Label();
+            this.textBox_numCliente = new System.Windows.Forms.TextBox();
+            this.label_numCliente = new System.Windows.Forms.Label();
+            this.button_agregarFoto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,22 +61,22 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(778, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Busqueda Cliente";
+            this.label1.Text = "Nuevo Cliente";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_nombre
             // 
             this.label_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_nombre.Location = new System.Drawing.Point(389, 80);
+            this.label_nombre.Location = new System.Drawing.Point(396, 79);
             this.label_nombre.Name = "label_nombre";
-            this.label_nombre.Size = new System.Drawing.Size(184, 24);
+            this.label_nombre.Size = new System.Drawing.Size(184, 23);
             this.label_nombre.TabIndex = 1;
             this.label_nombre.Text = "Nombre:";
             // 
             // textBox_nombre
             // 
             this.textBox_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_nombre.Location = new System.Drawing.Point(392, 95);
+            this.textBox_nombre.Location = new System.Drawing.Point(399, 94);
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(181, 22);
             this.textBox_nombre.TabIndex = 2;
@@ -92,7 +84,7 @@
             // textBox_apellido1
             // 
             this.textBox_apellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_apellido1.Location = new System.Drawing.Point(579, 95);
+            this.textBox_apellido1.Location = new System.Drawing.Point(586, 94);
             this.textBox_apellido1.Name = "textBox_apellido1";
             this.textBox_apellido1.Size = new System.Drawing.Size(181, 22);
             this.textBox_apellido1.TabIndex = 4;
@@ -100,16 +92,16 @@
             // label_apellido1
             // 
             this.label_apellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_apellido1.Location = new System.Drawing.Point(576, 80);
+            this.label_apellido1.Location = new System.Drawing.Point(583, 79);
             this.label_apellido1.Name = "label_apellido1";
-            this.label_apellido1.Size = new System.Drawing.Size(184, 24);
+            this.label_apellido1.Size = new System.Drawing.Size(184, 23);
             this.label_apellido1.TabIndex = 3;
             this.label_apellido1.Text = "Apellido1";
             // 
             // textBox_apellido2
             // 
             this.textBox_apellido2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_apellido2.Location = new System.Drawing.Point(205, 144);
+            this.textBox_apellido2.Location = new System.Drawing.Point(212, 149);
             this.textBox_apellido2.Name = "textBox_apellido2";
             this.textBox_apellido2.Size = new System.Drawing.Size(181, 22);
             this.textBox_apellido2.TabIndex = 6;
@@ -117,33 +109,16 @@
             // label_apellido2
             // 
             this.label_apellido2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_apellido2.Location = new System.Drawing.Point(202, 129);
+            this.label_apellido2.Location = new System.Drawing.Point(209, 134);
             this.label_apellido2.Name = "label_apellido2";
-            this.label_apellido2.Size = new System.Drawing.Size(184, 24);
+            this.label_apellido2.Size = new System.Drawing.Size(184, 23);
             this.label_apellido2.TabIndex = 5;
             this.label_apellido2.Text = "Apellido2";
-            // 
-            // textBox_numCliente
-            // 
-            this.textBox_numCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_numCliente.Location = new System.Drawing.Point(205, 95);
-            this.textBox_numCliente.Name = "textBox_numCliente";
-            this.textBox_numCliente.Size = new System.Drawing.Size(181, 22);
-            this.textBox_numCliente.TabIndex = 8;
-            // 
-            // label_numCliente
-            // 
-            this.label_numCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_numCliente.Location = new System.Drawing.Point(202, 80);
-            this.label_numCliente.Name = "label_numCliente";
-            this.label_numCliente.Size = new System.Drawing.Size(184, 24);
-            this.label_numCliente.TabIndex = 7;
-            this.label_numCliente.Text = "Nº Cliente:";
             // 
             // textBox_telefonoFijo
             // 
             this.textBox_telefonoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_telefonoFijo.Location = new System.Drawing.Point(392, 144);
+            this.textBox_telefonoFijo.Location = new System.Drawing.Point(399, 149);
             this.textBox_telefonoFijo.Name = "textBox_telefonoFijo";
             this.textBox_telefonoFijo.Size = new System.Drawing.Size(181, 22);
             this.textBox_telefonoFijo.TabIndex = 10;
@@ -151,16 +126,16 @@
             // label_telefonoFijo
             // 
             this.label_telefonoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_telefonoFijo.Location = new System.Drawing.Point(389, 129);
+            this.label_telefonoFijo.Location = new System.Drawing.Point(396, 134);
             this.label_telefonoFijo.Name = "label_telefonoFijo";
-            this.label_telefonoFijo.Size = new System.Drawing.Size(184, 24);
+            this.label_telefonoFijo.Size = new System.Drawing.Size(184, 23);
             this.label_telefonoFijo.TabIndex = 9;
             this.label_telefonoFijo.Text = "Teléfono Fijo:";
             // 
             // textBox_telefonoMovil
             // 
             this.textBox_telefonoMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_telefonoMovil.Location = new System.Drawing.Point(579, 144);
+            this.textBox_telefonoMovil.Location = new System.Drawing.Point(586, 149);
             this.textBox_telefonoMovil.Name = "textBox_telefonoMovil";
             this.textBox_telefonoMovil.Size = new System.Drawing.Size(181, 22);
             this.textBox_telefonoMovil.TabIndex = 12;
@@ -168,35 +143,35 @@
             // label_telefonoMovil
             // 
             this.label_telefonoMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_telefonoMovil.Location = new System.Drawing.Point(573, 129);
+            this.label_telefonoMovil.Location = new System.Drawing.Point(583, 134);
             this.label_telefonoMovil.Name = "label_telefonoMovil";
-            this.label_telefonoMovil.Size = new System.Drawing.Size(184, 24);
+            this.label_telefonoMovil.Size = new System.Drawing.Size(184, 23);
             this.label_telefonoMovil.TabIndex = 11;
             this.label_telefonoMovil.Text = "Teléfono Movil:";
             // 
             // textBox_correoElectronico
             // 
             this.textBox_correoElectronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_correoElectronico.Location = new System.Drawing.Point(205, 197);
+            this.textBox_correoElectronico.Location = new System.Drawing.Point(212, 202);
             this.textBox_correoElectronico.Name = "textBox_correoElectronico";
-            this.textBox_correoElectronico.Size = new System.Drawing.Size(286, 22);
+            this.textBox_correoElectronico.Size = new System.Drawing.Size(263, 22);
             this.textBox_correoElectronico.TabIndex = 14;
             // 
             // label_correoElectronico
             // 
             this.label_correoElectronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_correoElectronico.Location = new System.Drawing.Point(202, 182);
+            this.label_correoElectronico.Location = new System.Drawing.Point(209, 187);
             this.label_correoElectronico.Name = "label_correoElectronico";
-            this.label_correoElectronico.Size = new System.Drawing.Size(289, 24);
+            this.label_correoElectronico.Size = new System.Drawing.Size(266, 23);
             this.label_correoElectronico.TabIndex = 13;
             this.label_correoElectronico.Text = "Correo Electrónico:";
             // 
             // label_titulacion
             // 
             this.label_titulacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_titulacion.Location = new System.Drawing.Point(497, 182);
+            this.label_titulacion.Location = new System.Drawing.Point(478, 187);
             this.label_titulacion.Name = "label_titulacion";
-            this.label_titulacion.Size = new System.Drawing.Size(260, 24);
+            this.label_titulacion.Size = new System.Drawing.Size(290, 23);
             this.label_titulacion.TabIndex = 15;
             this.label_titulacion.Text = "Titulación:";
             // 
@@ -205,15 +180,15 @@
             this.comboBox_titulacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_titulacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_titulacion.FormattingEnabled = true;
-            this.comboBox_titulacion.Location = new System.Drawing.Point(500, 197);
+            this.comboBox_titulacion.Location = new System.Drawing.Point(481, 202);
             this.comboBox_titulacion.Name = "comboBox_titulacion";
-            this.comboBox_titulacion.Size = new System.Drawing.Size(257, 24);
+            this.comboBox_titulacion.Size = new System.Drawing.Size(287, 24);
             this.comboBox_titulacion.TabIndex = 16;
             // 
             // boton_Borrar
             // 
             this.boton_Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boton_Borrar.Location = new System.Drawing.Point(417, 237);
+            this.boton_Borrar.Location = new System.Drawing.Point(399, 268);
             this.boton_Borrar.Name = "boton_Borrar";
             this.boton_Borrar.Size = new System.Drawing.Size(75, 23);
             this.boton_Borrar.TabIndex = 17;
@@ -221,21 +196,21 @@
             this.boton_Borrar.UseVisualStyleBackColor = true;
             this.boton_Borrar.Click += new System.EventHandler(this.boton_Borrar_Click);
             // 
-            // boton_Buscar
+            // boton_nuevoUsuario
             // 
-            this.boton_Buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boton_Buscar.Location = new System.Drawing.Point(498, 237);
-            this.boton_Buscar.Name = "boton_Buscar";
-            this.boton_Buscar.Size = new System.Drawing.Size(75, 23);
-            this.boton_Buscar.TabIndex = 18;
-            this.boton_Buscar.Text = "Buscar";
-            this.boton_Buscar.UseVisualStyleBackColor = true;
-            this.boton_Buscar.Click += new System.EventHandler(this.boton_Buscar_Click);
+            this.boton_nuevoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boton_nuevoUsuario.Location = new System.Drawing.Point(480, 268);
+            this.boton_nuevoUsuario.Name = "boton_nuevoUsuario";
+            this.boton_nuevoUsuario.Size = new System.Drawing.Size(86, 23);
+            this.boton_nuevoUsuario.TabIndex = 18;
+            this.boton_nuevoUsuario.Text = "Dar de Alta";
+            this.boton_nuevoUsuario.UseVisualStyleBackColor = true;
+            this.boton_nuevoUsuario.Click += new System.EventHandler(this.boton_nuevoUsuario_Click);
             // 
             // boton_cancelar
             // 
             this.boton_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boton_cancelar.Location = new System.Drawing.Point(336, 237);
+            this.boton_cancelar.Location = new System.Drawing.Point(318, 268);
             this.boton_cancelar.Name = "boton_cancelar";
             this.boton_cancelar.Size = new System.Drawing.Size(75, 23);
             this.boton_cancelar.TabIndex = 20;
@@ -243,64 +218,45 @@
             this.boton_cancelar.UseVisualStyleBackColor = true;
             this.boton_cancelar.Click += new System.EventHandler(this.boton_cancelar_Click);
             // 
-            // listView1
+            // label_resultado
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Num_Cliente,
-            this.Nombre,
-            this.Apellido1,
-            this.Apellido2,
-            this.Telefono_Fijo,
-            this.Telefono_Movil,
-            this.Correo_Electronico,
-            this.Titulacion});
-            this.listView1.Location = new System.Drawing.Point(21, 289);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(739, 237);
-            this.listView1.TabIndex = 22;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.label_resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_resultado.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_resultado.Location = new System.Drawing.Point(213, 235);
+            this.label_resultado.Name = "label_resultado";
+            this.label_resultado.Size = new System.Drawing.Size(555, 24);
+            this.label_resultado.TabIndex = 21;
+            this.label_resultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Num_Cliente
+            // textBox_numCliente
             // 
-            this.Num_Cliente.Tag = "";
-            this.Num_Cliente.Text = "Num_Cliente";
-            this.Num_Cliente.Width = 68;
+            this.textBox_numCliente.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox_numCliente.Enabled = false;
+            this.textBox_numCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_numCliente.Location = new System.Drawing.Point(209, 93);
+            this.textBox_numCliente.Name = "textBox_numCliente";
+            this.textBox_numCliente.Size = new System.Drawing.Size(181, 22);
+            this.textBox_numCliente.TabIndex = 26;
             // 
-            // Nombre
+            // label_numCliente
             // 
-            this.Nombre.Text = "Nombre";
-            this.Nombre.Width = 56;
+            this.label_numCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_numCliente.Location = new System.Drawing.Point(206, 78);
+            this.label_numCliente.Name = "label_numCliente";
+            this.label_numCliente.Size = new System.Drawing.Size(184, 24);
+            this.label_numCliente.TabIndex = 25;
+            this.label_numCliente.Text = "Nº Cliente:";
             // 
-            // Apellido1
+            // button_agregarFoto
             // 
-            this.Apellido1.Text = "Apellido1";
-            this.Apellido1.Width = 73;
-            // 
-            // Apellido2
-            // 
-            this.Apellido2.Text = "Apellido2";
-            this.Apellido2.Width = 80;
-            // 
-            // Telefono_Fijo
-            // 
-            this.Telefono_Fijo.Text = "Telefono_Fijo";
-            this.Telefono_Fijo.Width = 90;
-            // 
-            // Telefono_Movil
-            // 
-            this.Telefono_Movil.Text = "Telefono_Movil";
-            this.Telefono_Movil.Width = 97;
-            // 
-            // Correo_Electronico
-            // 
-            this.Correo_Electronico.Text = "Correo_Electronico";
-            this.Correo_Electronico.Width = 146;
-            // 
-            // Titulacion
-            // 
-            this.Titulacion.Text = "Titulacion";
-            this.Titulacion.Width = 96;
+            this.button_agregarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_agregarFoto.Location = new System.Drawing.Point(14, 225);
+            this.button_agregarFoto.Name = "button_agregarFoto";
+            this.button_agregarFoto.Size = new System.Drawing.Size(148, 25);
+            this.button_agregarFoto.TabIndex = 27;
+            this.button_agregarFoto.Text = "Agregar Foto";
+            this.button_agregarFoto.UseVisualStyleBackColor = true;
+            this.button_agregarFoto.Click += new System.EventHandler(this.button_agregarFoto_Click);
             // 
             // pictureBox1
             // 
@@ -310,28 +266,23 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(148, 139);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(21, 263);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(736, 23);
-            this.label2.TabIndex = 24;
-            // 
-            // Form3
+            // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 306);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button_agregarFoto);
+            this.Controls.Add(this.textBox_numCliente);
+            this.Controls.Add(this.label_numCliente);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.label_resultado);
             this.Controls.Add(this.boton_cancelar);
-            this.Controls.Add(this.boton_Buscar);
+            this.Controls.Add(this.boton_nuevoUsuario);
             this.Controls.Add(this.boton_Borrar);
             this.Controls.Add(this.comboBox_titulacion);
             this.Controls.Add(this.label_titulacion);
@@ -341,8 +292,6 @@
             this.Controls.Add(this.label_telefonoMovil);
             this.Controls.Add(this.textBox_telefonoFijo);
             this.Controls.Add(this.label_telefonoFijo);
-            this.Controls.Add(this.textBox_numCliente);
-            this.Controls.Add(this.label_numCliente);
             this.Controls.Add(this.textBox_apellido2);
             this.Controls.Add(this.label_apellido2);
             this.Controls.Add(this.textBox_apellido1);
@@ -350,10 +299,10 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_nombre);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(800, 600);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Form3";
-            this.Text = "Busqueda Cliente";
+            this.MaximumSize = new System.Drawing.Size(800, 345);
+            this.MinimumSize = new System.Drawing.Size(800, 345);
+            this.Name = "Form4";
+            this.Text = "Alta Nuevo Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -369,8 +318,6 @@
         private System.Windows.Forms.Label label_apellido1;
         private System.Windows.Forms.TextBox textBox_apellido2;
         private System.Windows.Forms.Label label_apellido2;
-        private System.Windows.Forms.TextBox textBox_numCliente;
-        private System.Windows.Forms.Label label_numCliente;
         private System.Windows.Forms.TextBox textBox_telefonoFijo;
         private System.Windows.Forms.Label label_telefonoFijo;
         private System.Windows.Forms.TextBox textBox_telefonoMovil;
@@ -380,18 +327,12 @@
         private System.Windows.Forms.Label label_titulacion;
         private System.Windows.Forms.ComboBox comboBox_titulacion;
         private System.Windows.Forms.Button boton_Borrar;
-        private System.Windows.Forms.Button boton_Buscar;
+        private System.Windows.Forms.Button boton_nuevoUsuario;
         private System.Windows.Forms.Button boton_cancelar;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader Num_Cliente;
-        private System.Windows.Forms.ColumnHeader Nombre;
-        private System.Windows.Forms.ColumnHeader Apellido1;
-        private System.Windows.Forms.ColumnHeader Apellido2;
-        private System.Windows.Forms.ColumnHeader Telefono_Fijo;
-        private System.Windows.Forms.ColumnHeader Telefono_Movil;
-        private System.Windows.Forms.ColumnHeader Correo_Electronico;
-        private System.Windows.Forms.ColumnHeader Titulacion;
+        private System.Windows.Forms.Label label_resultado;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_numCliente;
+        private System.Windows.Forms.Label label_numCliente;
+        private System.Windows.Forms.Button button_agregarFoto;
     }
 }

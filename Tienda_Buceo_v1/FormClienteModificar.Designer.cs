@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Buceo_v1
 {
-    partial class Form6
+    partial class FormClienteModificar
     {
         /// <summary>
         /// Required designer variable.

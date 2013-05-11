@@ -12,9 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form3 : Form
+    public partial class FormClienteBusqueda : Form
     {
-        Form2 formPantallaInicial;
+        FormPantallaPrincipal formPantallaInicial;
 
         // La línea que guarda la IP del servidor, usuario y contraseña.
         String cadenaConexión;
@@ -34,7 +34,7 @@ namespace Tienda_Buceo_v1
         ListViewItem item1;
     
 
-        public Form3(Form2 F)
+        public FormClienteBusqueda(FormPantallaPrincipal F)
         {
             InitializeComponent();
 
@@ -309,7 +309,6 @@ namespace Tienda_Buceo_v1
             }
 
             try{
-                //pictureBox1.Image = new Bitmap(@"D:\Fotos\" + numeroClienteFoto + ".png");
                 pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png");
                 
             }

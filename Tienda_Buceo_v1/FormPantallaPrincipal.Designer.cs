@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Buceo_v1
 {
-    partial class Form2
+    partial class FormPantallaPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -174,9 +174,9 @@
             this.busquedaClienteToolStripMenuItem,
             this.nuevoClienteToolStripMenuItem,
             this.modificarClienteToolStripMenuItem,
+            this.borrarClienteToolStripMenuItem,
             this.busquedaComprasToolStripMenuItem,
-            this.nuevaCompraToolStripMenuItem,
-            this.borrarClienteToolStripMenuItem});
+            this.nuevaCompraToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.menuToolStripMenuItem.Text = "MENU";
@@ -224,7 +224,7 @@
             // borrarClienteToolStripMenuItem
             // 
             this.borrarClienteToolStripMenuItem.Name = "borrarClienteToolStripMenuItem";
-            this.borrarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
+            this.borrarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
             this.borrarClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.borrarClienteToolStripMenuItem.Text = "Borrar Cliente";
             this.borrarClienteToolStripMenuItem.Click += new System.EventHandler(this.borrarClienteToolStripMenuItem_Click);
@@ -235,7 +235,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(748, 586);
+            this.ClientSize = new System.Drawing.Size(748, 585);
             this.ControlBox = false;
             this.Controls.Add(this.button_cerrarSesion);
             this.Controls.Add(this.label_usuario);

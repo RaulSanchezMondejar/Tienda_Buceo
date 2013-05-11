@@ -10,14 +10,16 @@ using System.Windows.Forms;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form2 : Form
+    public partial class FormPantallaPrincipal : Form
     {
-        Form1 formularioEntrada;
-        Form3 formularioBusquedaCliente;
-        Form4 formularioNuevoCliente;
-        Form5 formularioSalir;
-        Form6 formularioModificarCliente;
-        Form7 formularioBorrarCliente;
+        FormEntrada formularioEntrada;
+        FormClienteBusqueda formularioBusquedaCliente;
+        FormClienteNuevo formularioNuevoCliente;
+        FormSalirPrograma formularioSalir;
+        FormClienteModificar formularioModificarCliente;
+        FormClienteBorrar formularioBorrarCliente;
+        
+
 
         /*
          * Declaramos las siguientes variables para la conexión a la BBDD, para que nos sea más cómodo su utilización.
@@ -31,23 +33,33 @@ namespace Tienda_Buceo_v1
 
 
 
-        public Form2(Form1 F)
+        public FormPantallaPrincipal(FormEntrada F)
         {
             InitializeComponent();
 
             formularioEntrada = F;
 
-            formularioSalir = new Form5(this);
-
+            
         }
 
         public void salirAplicacion() 
         {
             formularioEntrada.Close();
         }
+        /*
+        public void mostarPantallaAvisoBorrarCliente ()
+        {
+            // Abrimos el formulario de advertencia
+            formClienteBorrarAviso = new FormClienteBorrarAviso(this);
+            formClienteBorrarAviso.StartPosition = FormStartPosition.CenterScreen;
+            formClienteBorrarAviso.Show();
+        }
+         */
+
 
         private void boton_Salir_Click(object sender, EventArgs e)
         {
+            formularioSalir = new FormSalirPrograma(this);
             formularioSalir.StartPosition = FormStartPosition.CenterScreen;
             formularioSalir.Show();
         }
@@ -66,7 +78,7 @@ namespace Tienda_Buceo_v1
         {
             Hide();
             // Creamos el formulario principal.
-            formularioBusquedaCliente = new Form3(this);
+            formularioBusquedaCliente = new FormClienteBusqueda(this);
             formularioBusquedaCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioBusquedaCliente.Show();
         }
@@ -75,7 +87,7 @@ namespace Tienda_Buceo_v1
         {
             Hide();
             // Creamos el formulario busqueda cliente.
-            formularioNuevoCliente = new Form4(this);
+            formularioNuevoCliente = new FormClienteNuevo(this);
             formularioNuevoCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioNuevoCliente.Show();
         }
@@ -84,7 +96,7 @@ namespace Tienda_Buceo_v1
         {
             Hide();
             // Creamos el formulario principal.
-            formularioModificarCliente = new Form6(this);
+            formularioModificarCliente = new FormClienteModificar(this);
             formularioModificarCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioModificarCliente.Show();
         }
@@ -93,7 +105,7 @@ namespace Tienda_Buceo_v1
         {
             Hide();
             // Creamos el formulario principal.
-            formularioBorrarCliente = new Form7(this);
+            formularioBorrarCliente = new FormClienteBorrar(this);
             formularioBorrarCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioBorrarCliente.Show();
         }

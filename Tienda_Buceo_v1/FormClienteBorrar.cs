@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form7 : Form
+    public partial class FormClienteBorrar : Form
     {
-        Form2 formPantallaInicial;
+        FormPantallaPrincipal formPantallaInicial;
+        FormClienteBorrarAviso formClienteBorrarAviso;
 
         // La línea que guarda la IP del servidor, usuario y contraseña.
         String cadenaConexión;
@@ -30,17 +31,12 @@ namespace Tienda_Buceo_v1
         // Resultado de la consulta.
         MySqlDataReader resultado;
 
-        // El siguietne boolean lo vamos a utilizar para mostrar los mensajes de error.
-        Boolean mensajeError = false;
-
-        Boolean imagenInsertada = false;
-
         ListViewItem item1;
 
-        public Form7(Form2 F)
+        public FormClienteBorrar(FormPantallaPrincipal F)
         {
             InitializeComponent();
-              formPantallaInicial = F;
+            formPantallaInicial = F;
 
             comboBox_titulacion.Items.Add("DISCOVERY SCUBA DIVER");
             comboBox_titulacion.Items.Add("OPEN WATER DIVER");
@@ -70,9 +66,7 @@ namespace Tienda_Buceo_v1
             }
             catch { }
 
-            // hayarNumeroCliente();
-
-            ActiveControl = textBox_nombre;
+            ActiveControl = textBox_numCliente;
 
         }
 
@@ -98,7 +92,7 @@ namespace Tienda_Buceo_v1
         private void borrarDatos()
         {
             // Procedemos a borrar todos los campos.
-            //textBox_numCliente.Text = "";
+            textBox_numCliente.Text = "";
             textBox_nombre.Text = "";
             textBox_apellido1.Text = "";
             textBox_apellido2.Text = "";
@@ -109,13 +103,6 @@ namespace Tienda_Buceo_v1
             label2.Text = "";
 
 
-            // Ponemos en el color por defecto las celdas.
-            textBox_nombre.BackColor = System.Drawing.SystemColors.Window;
-            textBox_apellido1.BackColor = System.Drawing.SystemColors.Window;
-            textBox_apellido2.BackColor = System.Drawing.SystemColors.Window;
-
-            mensajeError = false;
-
             pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
         }
 
@@ -125,16 +112,18 @@ namespace Tienda_Buceo_v1
             Close();
             borrarDatos();
             formPantallaInicial.Show();
-            // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
+            
         }
 
         private void textoAMayusculas()
         {
+            // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
             textBox_nombre.Text = textBox_nombre.Text.ToUpper();
             textBox_apellido1.Text = textBox_apellido1.Text.ToUpper();
             textBox_apellido2.Text = textBox_apellido2.Text.ToUpper();
             textBox_correoElectronico.Text = textBox_correoElectronico.Text.ToUpper();
         }
+
         //metodo para obtener el valor de un campo del formulario de tipo textBox o comboBox
         public String obtenerValorCampo(Control x)
         {
@@ -149,6 +138,7 @@ namespace Tienda_Buceo_v1
             }
             return campo;
         }
+
         private void insertarFoto()
         {
             int numeroClienteFoto;
@@ -163,7 +153,6 @@ namespace Tienda_Buceo_v1
 
             try
             {
-                //pictureBox1.Image = new Bitmap(@"D:\Fotos\" + numeroClienteFoto + ".png");
                 pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png");
 
             }
@@ -175,131 +164,167 @@ namespace Tienda_Buceo_v1
 
         private void boton_Buscar_Click(object sender, EventArgs e)
         {
-            // Pasamos todos los campos a mayusculas.
-            textoAMayusculas();
-           
-            try { pictureBox1.Image = new Bitmap(@"\Fotos\0.png"); }
-            catch { }
-
-            // Aqui hariamos la consulta.
-            sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
-            Boolean masDeUnCampo = false;
-            foreach (Control x in this.Controls)
+            // Solo vamos a lanzar la consulta si hay algun dato relleno
+            if ((textBox_numCliente.Text != "") || (textBox_nombre.Text != "") || (textBox_apellido1.Text != "") || (textBox_apellido2.Text != "")
+                || (textBox_telefonoFijo.Text != "") || (textBox_telefonoMovil.Text != "") || (textBox_correoElectronico.Text != "")
+                || (comboBox_titulacion.Text != ""))
             {
-                if ((x is TextBox) || (x is ComboBox))
+                // Pasamos todos los campos a mayusculas.
+                textoAMayusculas();
+
+                try { pictureBox1.Image = new Bitmap(@"\Fotos\0.png"); }
+                catch { }
+
+                // Aqui hariamos la consulta.
+                sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
+                Boolean masDeUnCampo = false;
+                foreach (Control x in this.Controls)
                 {
-                    String nombreCajaTexto = x.Name;
-                    String campo = obtenerValorCampo(x);
-                    String columna = "";
-                    Boolean esNumero = false;
-                    Console.WriteLine(">> Leyendo el campo: " + campo);
-                    if ((campo != "") && (campo != "-1"))
+                    if ((x is TextBox) || (x is ComboBox))
                     {
-                        if (nombreCajaTexto.Equals("textBox_numCliente"))
+                        String nombreCajaTexto = x.Name;
+                        String campo = obtenerValorCampo(x);
+                        String columna = "";
+                        Boolean esNumero = false;
+                        Console.WriteLine(">> Leyendo el campo: " + campo);
+                        if ((campo != "") && (campo != "-1"))
                         {
-                            columna = "id_cliente";
-                            esNumero = true;
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_nombre"))
-                        {
-                            columna = "nombre";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_apellido1"))
-                        {
-                            columna = "apellido1";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_apellido2"))
-                        {
-                            columna = "apellido2";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_telefonoFijo"))
-                        {
-                            columna = "telefono_fijo";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_telefonoMovil"))
-                        {
-                            columna = "telefono_movil";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_correoElectronico"))
-                        {
-                            columna = "correo_electronico";
-                        }
-                        else if (nombreCajaTexto.Equals("comboBox_titulacion"))
-                        {
-                            columna = "titulacion";
-                        }
+                            if (nombreCajaTexto.Equals("textBox_numCliente"))
+                            {
+                                columna = "id_cliente";
+                                esNumero = true;
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_nombre"))
+                            {
+                                columna = "nombre";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_apellido1"))
+                            {
+                                columna = "apellido1";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_apellido2"))
+                            {
+                                columna = "apellido2";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_telefonoFijo"))
+                            {
+                                columna = "telefono_fijo";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_telefonoMovil"))
+                            {
+                                columna = "telefono_movil";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_correoElectronico"))
+                            {
+                                columna = "correo_electronico";
+                            }
+                            else if (nombreCajaTexto.Equals("comboBox_titulacion"))
+                            {
+                                columna = "titulacion";
+                            }
 
-                        Console.WriteLine(">> Leyendo el campo: " + columna);
-                        if (masDeUnCampo)
-                        {
-                            sentenciaSQL += " AND ";
-                        }
-                        else
-                        {
-                            masDeUnCampo = true;
-                        }
+                            Console.WriteLine(">> Leyendo el campo: " + columna);
+                            if (masDeUnCampo)
+                            {
+                                sentenciaSQL += " AND ";
+                            }
+                            else
+                            {
+                                masDeUnCampo = true;
+                            }
 
-                        if (esNumero)
-                        {
-                            sentenciaSQL += columna + " = " + campo;
-                        }
-                        else
-                        {
-                            sentenciaSQL += columna + " = '" + campo + "'";
-                        }
+                            if (esNumero)
+                            {
+                                sentenciaSQL += columna + " = " + campo;
+                            }
+                            else
+                            {
+                                sentenciaSQL += columna + " = '" + campo + "'";
+                            }
 
+                        }
                     }
                 }
-            }
 
-            try
-            {
-                // Iniciamos la conexion.
-                conexion.Open();
-                comando = new MySqlCommand(sentenciaSQL, conexion);
-                resultado = comando.ExecuteReader();
-                Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
-                listView1.Items.Clear();
-                int numResultados = 0;
-                while (resultado.Read())
+                try
                 {
-                    item1 = new ListViewItem(resultado["id_cliente"].ToString());
-                    item1.SubItems.Add(resultado["nombre"].ToString());
-                    item1.SubItems.Add(resultado["apellido1"].ToString());
-                    item1.SubItems.Add(resultado["apellido2"].ToString());
-                    item1.SubItems.Add(resultado["telefono_fijo"].ToString());
-                    item1.SubItems.Add(resultado["telefono_movil"].ToString());
-                    item1.SubItems.Add(resultado["correo_electronico"].ToString());
-                    item1.SubItems.Add(resultado["titulacion"].ToString());
-                    listView1.Items.AddRange(new ListViewItem[] { item1 });
-                    numResultados++;
-                }
-                if (numResultados > 0)
-                {
-                    label2.Text = "Se han encontrado los siguientes resultados:";
-                    if (numResultados == 1)
+                    // Iniciamos la conexion.
+                    conexion.Open();
+                    comando = new MySqlCommand(sentenciaSQL, conexion);
+                    resultado = comando.ExecuteReader();
+                    Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
+                    listView1.Items.Clear();
+                    int numResultados = 0;
+                    while (resultado.Read())
                     {
-                        insertarFoto();
-                    }
-                }
-                else
-                {
-                    label2.Text = "No se ha encontrado ningún resultado";
-                }
-                conexion.Close();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
-            }
+                        item1 = new ListViewItem(resultado["id_cliente"].ToString());
+                        item1.SubItems.Add(resultado["nombre"].ToString());
+                        item1.SubItems.Add(resultado["apellido1"].ToString());
+                        item1.SubItems.Add(resultado["apellido2"].ToString());
+                        item1.SubItems.Add(resultado["telefono_fijo"].ToString());
+                        item1.SubItems.Add(resultado["telefono_movil"].ToString());
+                        item1.SubItems.Add(resultado["correo_electronico"].ToString());
 
+                        int datoAuxiliar = Int32.Parse(resultado["titulacion"].ToString());
+                        switch (datoAuxiliar)
+                        {
+                            case 0: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
+                            case 1: item1.SubItems.Add("OPEN WATER DIVER"); break;
+                            case 2: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
+                            case 3: item1.SubItems.Add("RESCUE DIVER"); break;
+                            case 4: item1.SubItems.Add("DIVEMASTER"); break;
+                            case 5: item1.SubItems.Add("INSTRUCTOR"); break;
+                            default: item1.SubItems.Add("SIN TITULACION"); break;
+                        }
+
+                        listView1.Items.AddRange(new ListViewItem[] { item1 });
+                        numResultados++;
+                    }
+                    if (numResultados > 0)
+                    {
+                        label2.Text = "Se han encontrado los siguientes resultados:";
+                        if (numResultados == 1)
+                        {
+                            insertarFoto();
+                        }
+                    }
+                    else
+                    {
+                        label2.Text = "No se ha encontrado ningún resultado";
+                    }
+                    conexion.Close();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
+                }
+            
+            
+            }else
+            {
+                MessageBox.Show("Error: No se ha insertado ningun dato de busqueda");
+            }
         }
 
         private void boton_darDeBaja_Click(object sender, EventArgs e)
         {
+            // Solo vamos a lanzar la consulta si hay algun dato relleno
+            if ((textBox_numCliente.Text != "") || (textBox_nombre.Text != "") || (textBox_apellido1.Text != "") || (textBox_apellido2.Text != "")
+                || (textBox_telefonoFijo.Text != "") || (textBox_telefonoMovil.Text != "") || (textBox_correoElectronico.Text != "")
+                || (comboBox_titulacion.Text != ""))
+            {
+                // Abrimos el formulario de advertencia
+                formClienteBorrarAviso = new FormClienteBorrarAviso(this);
+                formClienteBorrarAviso.StartPosition = FormStartPosition.CenterScreen;
+                formClienteBorrarAviso.Show();
+            }else
+            {
+                MessageBox.Show("Error: No se ha insertado ningun dato a eliminar");
+            }
+        }
 
-
-
+        public void dardeBaja() 
+        {
             // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
             textoAMayusculas();
 
@@ -386,35 +411,16 @@ namespace Tienda_Buceo_v1
                 Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
                 listView1.Items.Clear();
                 label2.Text = "Usuario dado de baja correctamente";
-
-       
+                borrarDatos();
                 conexion.Close();
             }
             catch (Exception)
             {
                 Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
             }
-
+        
         }
 
-
-
-        private void hayarNumeroCliente()
-        {
-            //   Iniciamos la conexion.
-            conexion.Open();
-            // Aqui hariamos la consulta.
-
-            sentenciaSQL = "SELECT MAX(id_cliente) AS Dato FROM sql27652.clientes;";
-            comando = new MySqlCommand(sentenciaSQL, conexion);
-            resultado = comando.ExecuteReader();
-            if (resultado.Read())
-            {
-                textBox_numCliente.Text = (resultado.GetInt32(0) - 1).ToString();
-            }
-            conexion.Close();
-
-        }
 
         private void boton_Borrar_Click(object sender, EventArgs e)
         {

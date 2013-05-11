@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Buceo_v1
 {
-    partial class Form1
+    partial class FormEntrada
     {
         /// <summary>
         /// Variable del diseñador requerida.

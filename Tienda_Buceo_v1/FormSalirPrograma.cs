@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form5 : Form
+    public partial class FormSalirPrograma : Form
     {
-        Form2 formPantallaInicial;
+        FormPantallaPrincipal formPantallaInicial;
 
 
-        public Form5(Form2 F)
+        public FormSalirPrograma(FormPantallaPrincipal F)
         {
             InitializeComponent();
 

@@ -12,9 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form4 : Form
+    public partial class FormClienteNuevo : Form
     {
-        Form2 formPantallaInicial;
+        FormPantallaPrincipal formPantallaInicial;
 
         // La línea que guarda la IP del servidor, usuario y contraseña.
         String cadenaConexión;
@@ -36,7 +36,7 @@ namespace Tienda_Buceo_v1
 
         Boolean imagenInsertada = false;
 
-        public Form4(Form2 F)
+        public FormClienteNuevo(FormPantallaPrincipal F)
         {
             InitializeComponent();
 

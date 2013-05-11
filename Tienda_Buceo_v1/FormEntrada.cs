@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class Form1 : Form
+    public partial class FormEntrada : Form
     {
 
         // Con este nombre llamaremos al formulario Pantalla Inicial.
-        Form2 formPantallaInicial;
+        FormPantallaPrincipal formPantallaInicial;
 
 
-        public Form1()
+        public FormEntrada()
         {
             InitializeComponent();
 
             // Creamos el formulario principal.
-            formPantallaInicial = new Form2(this);
+            formPantallaInicial = new FormPantallaPrincipal(this);
 
             // Configuramos los eventos de teclado para poder utilizarlos.
             textBox_contrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckKeys);
