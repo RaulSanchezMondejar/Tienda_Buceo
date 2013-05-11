@@ -17,6 +17,7 @@ namespace Tienda_Buceo_v1
         Form4 formularioNuevoCliente;
         Form5 formularioSalir;
         Form6 formularioModificarCliente;
+        Form7 formularioBorrarCliente;
 
         /*
          * Declaramos las siguientes variables para la conexión a la BBDD, para que nos sea más cómodo su utilización.
@@ -87,6 +88,15 @@ namespace Tienda_Buceo_v1
             formularioModificarCliente.StartPosition = FormStartPosition.CenterScreen;
             formularioModificarCliente.Show();
         }
+        //Nuevo formulario boorar cliente
+        private void borrarCliente()
+        {
+            Hide();
+            // Creamos el formulario principal.
+            formularioBorrarCliente = new Form7(this);
+            formularioBorrarCliente.StartPosition = FormStartPosition.CenterScreen;
+            formularioBorrarCliente.Show();
+        }
 
         private void button_cerrarSesion_Click(object sender, EventArgs e)
         {
@@ -118,6 +128,12 @@ namespace Tienda_Buceo_v1
         private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void borrarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //boton del menu
+            borrarCliente();
         }
     }
 }

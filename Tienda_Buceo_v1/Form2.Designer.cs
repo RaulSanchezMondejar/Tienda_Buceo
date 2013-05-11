@@ -42,6 +42,7 @@
             this.modificarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,7 +175,8 @@
             this.nuevoClienteToolStripMenuItem,
             this.modificarClienteToolStripMenuItem,
             this.busquedaComprasToolStripMenuItem,
-            this.nuevaCompraToolStripMenuItem});
+            this.nuevaCompraToolStripMenuItem,
+            this.borrarClienteToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.menuToolStripMenuItem.Text = "MENU";
@@ -219,13 +221,21 @@
             this.nuevaCompraToolStripMenuItem.Text = "Nueva Compra";
             this.nuevaCompraToolStripMenuItem.Click += new System.EventHandler(this.nuevaCompraToolStripMenuItem_Click);
             // 
+            // borrarClienteToolStripMenuItem
+            // 
+            this.borrarClienteToolStripMenuItem.Name = "borrarClienteToolStripMenuItem";
+            this.borrarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
+            this.borrarClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.borrarClienteToolStripMenuItem.Text = "Borrar Cliente";
+            this.borrarClienteToolStripMenuItem.Click += new System.EventHandler(this.borrarClienteToolStripMenuItem_Click);
+            // 
             // Form2
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(748, 585);
+            this.ClientSize = new System.Drawing.Size(748, 586);
             this.ControlBox = false;
             this.Controls.Add(this.button_cerrarSesion);
             this.Controls.Add(this.label_usuario);
@@ -266,5 +276,6 @@
         private System.Windows.Forms.ToolStripMenuItem modificarClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busquedaComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem borrarClienteToolStripMenuItem;
     }
 }
