@@ -112,6 +112,8 @@ namespace Tienda_Buceo_v1
 
             mensajeError = false;
 
+            comboBox_titulacion.SelectedIndex = -1;
+
             pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
         }
 

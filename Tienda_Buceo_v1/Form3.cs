@@ -107,6 +107,8 @@ namespace Tienda_Buceo_v1
             listView1.Items.Clear();
             label2.Text = "";
 
+            comboBox_titulacion.SelectedIndex = -1;
+
             try
             {
                 pictureBox1.Image = new Bitmap(@"\Fotos\0.png");
@@ -137,124 +139,146 @@ namespace Tienda_Buceo_v1
 
         private void boton_Buscar_Click(object sender, EventArgs e)
         {
-            // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
-            textoAMayusculas();
-
-            try {pictureBox1.Image = new Bitmap(@"\Fotos\0.png");}
-            catch{} 
-
-            // Aqui hariamos la consulta.
-            sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
-            Boolean masDeUnCampo = false;
-            foreach (Control x in this.Controls)
+            // Solo vamos a lanzar la consulta si hay algun dato relleno
+            if ((textBox_numCliente.Text != "") || (textBox_nombre.Text != "") || (textBox_apellido1.Text != "") || (textBox_apellido2.Text != "")
+                || (textBox_telefonoFijo.Text != "") || (textBox_telefonoMovil.Text != "") || (textBox_correoElectronico.Text != "")
+                || (comboBox_titulacion.Text != ""))
             {
-                if ((x is TextBox) || (x is ComboBox))
+
+                // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
+                textoAMayusculas();
+
+                try { pictureBox1.Image = new Bitmap(@"\Fotos\0.png"); }
+                catch { }
+
+                // Aqui hariamos la consulta.
+                sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
+                Boolean masDeUnCampo = false;
+                foreach (Control x in this.Controls)
                 {
-                    String nombreCajaTexto = x.Name;
-                    String campo = obtenerValorCampo(x);
-                    String columna = "";
-                    Boolean esNumero = false;
-                    Console.WriteLine(">> Leyendo el campo: " + campo);
-                    if ((campo != "") && (campo != "-1"))
+                    if ((x is TextBox) || (x is ComboBox))
                     {
-                        if (nombreCajaTexto.Equals("textBox_numCliente"))
+                        String nombreCajaTexto = x.Name;
+                        String campo = obtenerValorCampo(x);
+                        String columna = "";
+                        Boolean esNumero = false;
+                        Console.WriteLine(">> Leyendo el campo: " + campo);
+                        if ((campo != "") && (campo != "-1"))
                         {
-                            columna = "id_cliente";
-                            esNumero = true;
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_nombre"))
-                        {
-                            columna = "nombre";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_apellido1"))
-                        {
-                            columna = "apellido1";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_apellido2"))
-                        {
-                            columna = "apellido2";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_telefonoFijo"))
-                        {
-                            columna = "telefono_fijo";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_telefonoMovil"))
-                        {
-                            columna = "telefono_movil";
-                        }
-                        else if (nombreCajaTexto.Equals("textBox_correoElectronico"))
-                        {
-                            columna = "correo_electronico";
-                        }
-                        else if (nombreCajaTexto.Equals("comboBox_titulacion"))
-                        {
-                            columna = "titulacion";
-                        }
+                            if (nombreCajaTexto.Equals("textBox_numCliente"))
+                            {
+                                columna = "id_cliente";
+                                esNumero = true;
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_nombre"))
+                            {
+                                columna = "nombre";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_apellido1"))
+                            {
+                                columna = "apellido1";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_apellido2"))
+                            {
+                                columna = "apellido2";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_telefonoFijo"))
+                            {
+                                columna = "telefono_fijo";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_telefonoMovil"))
+                            {
+                                columna = "telefono_movil";
+                            }
+                            else if (nombreCajaTexto.Equals("textBox_correoElectronico"))
+                            {
+                                columna = "correo_electronico";
+                            }
+                            else if (nombreCajaTexto.Equals("comboBox_titulacion"))
+                            {
+                                columna = "titulacion";
+                            }
 
-                        Console.WriteLine(">> Leyendo el campo: " + columna);
-                        if (masDeUnCampo)
-                        {
-                            sentenciaSQL += " AND ";
-                        }
-                        else
-                        {
-                            masDeUnCampo = true;
-                        }
+                            Console.WriteLine(">> Leyendo el campo: " + columna);
+                            if (masDeUnCampo)
+                            {
+                                sentenciaSQL += " AND ";
+                            }
+                            else
+                            {
+                                masDeUnCampo = true;
+                            }
 
-                        if (esNumero)
-                        {
-                            sentenciaSQL += columna + " = " + campo;
-                        }
-                        else
-                        {
-                            sentenciaSQL += columna + " = '" + campo + "'";
-                        }
+                            if (esNumero)
+                            {
+                                sentenciaSQL += columna + " = " + campo;
+                            }
+                            else
+                            {
+                                sentenciaSQL += columna + " = '" + campo + "'";
+                            }
 
+                        }
                     }
                 }
-            }
 
-            try
-            {
-                // Iniciamos la conexion.
-                conexion.Open();
-                comando = new MySqlCommand(sentenciaSQL, conexion);
-                resultado = comando.ExecuteReader();
-                Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
-                listView1.Items.Clear();
-                int numResultados = 0;
-                while (resultado.Read())
+                try
                 {
-                    item1 = new ListViewItem(resultado["id_cliente"].ToString());
-                    item1.SubItems.Add(resultado["nombre"].ToString());
-                    item1.SubItems.Add(resultado["apellido1"].ToString());
-                    item1.SubItems.Add(resultado["apellido2"].ToString());
-                    item1.SubItems.Add(resultado["telefono_fijo"].ToString());
-                    item1.SubItems.Add(resultado["telefono_movil"].ToString());
-                    item1.SubItems.Add(resultado["correo_electronico"].ToString());
-                    item1.SubItems.Add(resultado["titulacion"].ToString());
-                    listView1.Items.AddRange(new ListViewItem[] { item1 });
-                    numResultados++;
-                }
-                if (numResultados > 0)
-                {
-                    label2.Text = "Se han encontrado los siguientes resultados:";
-                    if (numResultados == 1)
+                    // Iniciamos la conexion.
+                    conexion.Open();
+                    comando = new MySqlCommand(sentenciaSQL, conexion);
+                    resultado = comando.ExecuteReader();
+                    Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
+                    listView1.Items.Clear();
+                    int numResultados = 0;
+                    while (resultado.Read())
                     {
-                        insertarFoto();
-                    }    
-                }
-                else
-                {
-                    label2.Text = "No se ha encontrado ningún resultado";
-                }
-                conexion.Close();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
-            }
+                        item1 = new ListViewItem(resultado["id_cliente"].ToString());
+                        item1.SubItems.Add(resultado["nombre"].ToString());
+                        item1.SubItems.Add(resultado["apellido1"].ToString());
+                        item1.SubItems.Add(resultado["apellido2"].ToString());
+                        item1.SubItems.Add(resultado["telefono_fijo"].ToString());
+                        item1.SubItems.Add(resultado["telefono_movil"].ToString());
+                        item1.SubItems.Add(resultado["correo_electronico"].ToString());
 
+                        int datoAuxiliar = Int32.Parse(resultado["titulacion"].ToString());
+                        switch (datoAuxiliar)
+                        {
+                            case 0: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
+                            case 1: item1.SubItems.Add("OPEN WATER DIVER"); break;
+                            case 2: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
+                            case 3: item1.SubItems.Add("RESCUE DIVER"); break;
+                            case 4: item1.SubItems.Add("DIVEMASTER"); break;
+                            case 5: item1.SubItems.Add("INSTRUCTOR"); break;
+                            default: item1.SubItems.Add("SIN TITULACION"); break;
+                        }
+
+                        listView1.Items.AddRange(new ListViewItem[] { item1 });
+                        numResultados++;
+                    }
+                    if (numResultados > 0)
+                    {
+                        label2.Text = "Se han encontrado los siguientes resultados:";
+                        if (numResultados == 1)
+                        {
+                            insertarFoto();
+                        }
+                    }
+                    else
+                    {
+                        label2.Text = "No se ha encontrado ningún resultado";
+                    }
+                    conexion.Close();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
+                }
+            }
+            else {
+                borrarDatos();
+                MessageBox.Show("Error: No se ha insertado ningun dato de busqueda");
+            }
         }
 
         //metodo para obtener el valor de un campo del formulario de tipo textBox o comboBox

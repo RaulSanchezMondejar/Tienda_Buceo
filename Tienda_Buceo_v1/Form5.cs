@@ -33,10 +33,5 @@ namespace Tienda_Buceo_v1
         {
             formPantallaInicial.salirAplicacion();
         }
-
-        private void Form5_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

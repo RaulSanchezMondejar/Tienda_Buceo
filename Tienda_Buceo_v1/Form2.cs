@@ -16,11 +16,13 @@ namespace Tienda_Buceo_v1
         Form3 formularioBusquedaCliente;
         Form4 formularioNuevoCliente;
         Form5 formularioSalir;
+        Form6 formularioModificarCliente;
 
         /*
          * Declaramos las siguientes variables para la conexión a la BBDD, para que nos sea más cómodo su utilización.
          */
         public String nombreServidor = "sql2.freesqldatabase.com";
+        //public String nombreServidor = "www.db4free.net"; //BBDD de BackUP
         public String nombreBBDD = "sql27652";
         public String puertoConexion = "3306";
         public String nombreUsuario = "sql27652";
@@ -77,6 +79,15 @@ namespace Tienda_Buceo_v1
             formularioNuevoCliente.Show();
         }
 
+        private void modificarCliente() 
+        {
+            Hide();
+            // Creamos el formulario principal.
+            formularioModificarCliente = new Form6(this);
+            formularioModificarCliente.StartPosition = FormStartPosition.CenterScreen;
+            formularioModificarCliente.Show();
+        }
+
         private void button_cerrarSesion_Click(object sender, EventArgs e)
         {
             Hide();
@@ -96,7 +107,7 @@ namespace Tienda_Buceo_v1
 
         private void modificarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            modificarCliente();
         }
 
         private void busquedaComprasToolStripMenuItem_Click(object sender, EventArgs e)

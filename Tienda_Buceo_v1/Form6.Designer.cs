@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Buceo_v1
 {
-    partial class Form3
+    partial class Form6
     {
         /// <summary>
         /// Required designer variable.
@@ -59,6 +59,8 @@
             this.Titulacion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button_modificar = new System.Windows.Forms.Button();
+            this.button_agregarFoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(778, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Busqueda Cliente";
+            this.label1.Text = "Modificar Cliente";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_nombre
@@ -306,7 +308,7 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::Tienda_Buceo_v1.Properties.Resources._0;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 80);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(148, 139);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -320,13 +322,37 @@
             this.label2.Size = new System.Drawing.Size(736, 23);
             this.label2.TabIndex = 24;
             // 
-            // Form3
+            // button_modificar
+            // 
+            this.button_modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_modificar.Location = new System.Drawing.Point(682, 237);
+            this.button_modificar.Name = "button_modificar";
+            this.button_modificar.Size = new System.Drawing.Size(75, 23);
+            this.button_modificar.TabIndex = 25;
+            this.button_modificar.Text = "Modificar";
+            this.button_modificar.UseVisualStyleBackColor = true;
+            this.button_modificar.Click += new System.EventHandler(this.button_modificar_Click);
+            // 
+            // button_agregarFoto
+            // 
+            this.button_agregarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_agregarFoto.Location = new System.Drawing.Point(21, 225);
+            this.button_agregarFoto.Name = "button_agregarFoto";
+            this.button_agregarFoto.Size = new System.Drawing.Size(148, 25);
+            this.button_agregarFoto.TabIndex = 28;
+            this.button_agregarFoto.Text = "Modificar Foto";
+            this.button_agregarFoto.UseVisualStyleBackColor = true;
+            this.button_agregarFoto.Click += new System.EventHandler(this.button_agregarFoto_Click);
+            // 
+            // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.button_agregarFoto);
+            this.Controls.Add(this.button_modificar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listView1);
@@ -352,8 +378,8 @@
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Form3";
-            this.Text = "Busqueda Cliente";
+            this.Name = "Form6";
+            this.Text = "Modificar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -393,5 +419,7 @@
         private System.Windows.Forms.ColumnHeader Titulacion;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button_modificar;
+        private System.Windows.Forms.Button button_agregarFoto;
     }
 }
