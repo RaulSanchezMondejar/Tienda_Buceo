@@ -102,6 +102,7 @@ namespace Tienda_Buceo_v1
             comboBox_titulacion.Text = "";
             label2.Text = "";
 
+            button_darDeBaja.Enabled = false;
 
             pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
         }
@@ -285,6 +286,7 @@ namespace Tienda_Buceo_v1
                         label2.Text = "Se han encontrado los siguientes resultados:";
                         if (numResultados == 1)
                         {
+                            button_darDeBaja.Enabled = true;
                             insertarFoto();
                         }
                     }

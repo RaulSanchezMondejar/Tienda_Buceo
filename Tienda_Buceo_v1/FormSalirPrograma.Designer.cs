@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalirPrograma));
             this.label1 = new System.Windows.Forms.Label();
             this.button_salir_si = new System.Windows.Forms.Button();
             this.button_salir_no = new System.Windows.Forms.Button();
@@ -63,7 +64,7 @@
             this.button_salir_no.UseVisualStyleBackColor = true;
             this.button_salir_no.Click += new System.EventHandler(this.button_salir_no_Click);
             // 
-            // Form5
+            // FormSalirPrograma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,7 +74,8 @@
             this.Controls.Add(this.button_salir_no);
             this.Controls.Add(this.button_salir_si);
             this.Controls.Add(this.label1);
-            this.Name = "Form5";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormSalirPrograma";
             this.ResumeLayout(false);
 
         }

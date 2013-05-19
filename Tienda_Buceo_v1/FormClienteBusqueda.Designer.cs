@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienteBusqueda));
             this.label1 = new System.Windows.Forms.Label();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
@@ -320,7 +321,7 @@
             this.label2.Size = new System.Drawing.Size(736, 23);
             this.label2.TabIndex = 24;
             // 
-            // Form3
+            // FormClienteBusqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -350,9 +351,10 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_nombre);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Form3";
+            this.Name = "FormClienteBusqueda";
             this.Text = "Busqueda Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

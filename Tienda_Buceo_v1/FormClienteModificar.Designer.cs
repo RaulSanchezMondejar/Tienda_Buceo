@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienteModificar));
             this.label1 = new System.Windows.Forms.Label();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
@@ -324,6 +325,7 @@
             // 
             // button_modificar
             // 
+            this.button_modificar.Enabled = false;
             this.button_modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_modificar.Location = new System.Drawing.Point(682, 237);
             this.button_modificar.Name = "button_modificar";
@@ -344,7 +346,7 @@
             this.button_agregarFoto.UseVisualStyleBackColor = true;
             this.button_agregarFoto.Click += new System.EventHandler(this.button_agregarFoto_Click);
             // 
-            // Form6
+            // FormClienteModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -376,9 +378,10 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_nombre);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Form6";
+            this.Name = "FormClienteModificar";
             this.Text = "Modificar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

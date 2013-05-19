@@ -40,7 +40,8 @@ namespace Tienda_Buceo_v1
 
             formPantallaInicial = F;
 
-            // Introducimos las siguientes campos.
+            // Introducimos las siguientes campos del desplegable.
+            comboBox_titulacion.Items.Add("SIN TITULACION");
             comboBox_titulacion.Items.Add("DISCOVERY SCUBA DIVER");
             comboBox_titulacion.Items.Add("OPEN WATER DIVER");
             comboBox_titulacion.Items.Add("ADVANCE OPEN WATER DIVER");
@@ -73,6 +74,7 @@ namespace Tienda_Buceo_v1
             // Marcamos como activo el campo de número Cliente.
             ActiveControl = textBox_numCliente;
         }
+
 
         /*
          * Este método nos va a permitir que cuando pulsemos el "Enter", sea lo mismo que pulsar el botón aceptar.
@@ -244,12 +246,13 @@ namespace Tienda_Buceo_v1
                         int datoAuxiliar = Int32.Parse(resultado["titulacion"].ToString());
                         switch (datoAuxiliar)
                         {
-                            case 0: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
-                            case 1: item1.SubItems.Add("OPEN WATER DIVER"); break;
-                            case 2: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
-                            case 3: item1.SubItems.Add("RESCUE DIVER"); break;
-                            case 4: item1.SubItems.Add("DIVEMASTER"); break;
-                            case 5: item1.SubItems.Add("INSTRUCTOR"); break;
+                            case 1: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
+                            case 2: item1.SubItems.Add("OPEN WATER DIVER"); break;
+                            case 3: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
+                            case 4: item1.SubItems.Add("RESCUE DIVER"); break;
+                            case 5: item1.SubItems.Add("DIVEMASTER"); break;
+                            case 6: item1.SubItems.Add("INSTRUCTOR"); break;
+                            case 0: item1.SubItems.Add("SIN TITULACION"); break;
                             default: item1.SubItems.Add("SIN TITULACION"); break;
                         }
 
@@ -270,16 +273,59 @@ namespace Tienda_Buceo_v1
                     }
                     conexion.Close();
                 }
-                catch (Exception)
+                catch
                 {
-                    Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
+                    mostrarMensajaError();
                 }
             }
             else {
                 borrarDatos();
                 MessageBox.Show("Error: No se ha insertado ningun dato de busqueda");
+                ActiveControl = textBox_numCliente;
             }
         }
+
+
+        private void mostrarMensajaError()
+        {
+            label1.Text = "Sin conexión con la BBDD";
+            textBox_numCliente.Visible = false;
+            boton_Borrar.Visible = false;
+            boton_Buscar.Visible = false;
+            textBox_nombre.Visible = false;
+            textBox_apellido1.Visible = false;
+            textBox_apellido2.Visible = false;
+            textBox_telefonoFijo.Visible = false;
+            textBox_telefonoMovil.Visible = false;
+            textBox_correoElectronico.Visible = false;
+            comboBox_titulacion.Visible = false;
+            label_nombre.Visible = false;
+            label_apellido1.Visible = false;
+            label_apellido2.Visible = false;
+            label_telefonoFijo.Visible = false;
+            label_telefonoMovil.Visible = false;
+            label_correoElectronico.Visible = false;
+            label_titulacion.Visible = false;
+            label_numCliente.Visible = false;
+            label2.Visible = false;
+            listView1.Visible = false;
+
+            this.MaximumSize = new System.Drawing.Size(800, 345);
+            this.MinimumSize = new System.Drawing.Size(800, 345);
+            boton_cancelar.SetBounds(250, 260, 250, 40);
+            pictureBox1.SetBounds(250, 60, 700, 200);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+
+            try
+            {
+                pictureBox1.Image = global::Tienda_Buceo_v1.Properties.Resources.error;
+            }
+            catch { }
+
+            MessageBox.Show("Error: No ha conexión con la BBDD, pongase en contacto\ncon el departamento de Informática");
+        }
+
+
 
         //metodo para obtener el valor de un campo del formulario de tipo textBox o comboBox
         public String obtenerValorCampo(Control x)

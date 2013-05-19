@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEntrada));
             this.textBox_usuario = new System.Windows.Forms.TextBox();
             this.label_usuario = new System.Windows.Forms.Label();
             this.label_contrasena = new System.Windows.Forms.Label();
@@ -114,7 +115,7 @@
             this.label_errorUsuarioContrasena.TabIndex = 7;
             this.label_errorUsuarioContrasena.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // FormEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +130,8 @@
             this.Controls.Add(this.textBox_contrasena);
             this.Controls.Add(this.label_usuario);
             this.Controls.Add(this.textBox_usuario);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();

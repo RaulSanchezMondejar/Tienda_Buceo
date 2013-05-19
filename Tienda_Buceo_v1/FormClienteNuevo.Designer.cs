@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienteNuevo));
             this.label1 = new System.Windows.Forms.Label();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
@@ -269,7 +270,7 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
-            // Form4
+            // FormClienteNuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -299,9 +300,10 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_nombre);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 345);
             this.MinimumSize = new System.Drawing.Size(800, 345);
-            this.Name = "Form4";
+            this.Name = "FormClienteNuevo";
             this.Text = "Alta Nuevo Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

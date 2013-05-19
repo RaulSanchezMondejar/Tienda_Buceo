@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienteBorrarAviso));
             this.label1 = new System.Windows.Forms.Label();
             this.button_borrar_si = new System.Windows.Forms.Button();
             this.button_borrar_no = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.button_borrar_no);
             this.Controls.Add(this.button_borrar_si);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClienteBorrarAviso";
             this.ResumeLayout(false);
 

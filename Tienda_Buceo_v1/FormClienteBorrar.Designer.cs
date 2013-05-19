@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienteBorrar));
             this.button_darDeBaja = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -65,6 +66,7 @@
             // 
             // button_darDeBaja
             // 
+            this.button_darDeBaja.Enabled = false;
             this.button_darDeBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_darDeBaja.Location = new System.Drawing.Point(653, 244);
             this.button_darDeBaja.Name = "button_darDeBaja";
@@ -333,7 +335,7 @@
             this.pictureBox1.TabIndex = 50;
             this.pictureBox1.TabStop = false;
             // 
-            // Form7
+            // FormClienteBorrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -364,9 +366,10 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_nombre);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Form7";
+            this.Name = "FormClienteBorrar";
             this.Text = "Borrar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

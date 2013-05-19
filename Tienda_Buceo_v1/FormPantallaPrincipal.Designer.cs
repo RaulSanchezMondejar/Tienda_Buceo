@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPantallaPrincipal));
             this.boton_Salir = new System.Windows.Forms.Button();
             this.boton_busquedaCliente = new System.Windows.Forms.Button();
             this.boton_nuevoCliente = new System.Windows.Forms.Button();
@@ -40,9 +41,9 @@
             this.busquedaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.borrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -205,6 +206,14 @@
             this.modificarClienteToolStripMenuItem.Text = "Modificar Cliente";
             this.modificarClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarClienteToolStripMenuItem_Click);
             // 
+            // borrarClienteToolStripMenuItem
+            // 
+            this.borrarClienteToolStripMenuItem.Name = "borrarClienteToolStripMenuItem";
+            this.borrarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.borrarClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.borrarClienteToolStripMenuItem.Text = "Borrar Cliente";
+            this.borrarClienteToolStripMenuItem.Click += new System.EventHandler(this.borrarClienteToolStripMenuItem_Click);
+            // 
             // busquedaComprasToolStripMenuItem
             // 
             this.busquedaComprasToolStripMenuItem.Name = "busquedaComprasToolStripMenuItem";
@@ -221,15 +230,7 @@
             this.nuevaCompraToolStripMenuItem.Text = "Nueva Compra";
             this.nuevaCompraToolStripMenuItem.Click += new System.EventHandler(this.nuevaCompraToolStripMenuItem_Click);
             // 
-            // borrarClienteToolStripMenuItem
-            // 
-            this.borrarClienteToolStripMenuItem.Name = "borrarClienteToolStripMenuItem";
-            this.borrarClienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
-            this.borrarClienteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.borrarClienteToolStripMenuItem.Text = "Borrar Cliente";
-            this.borrarClienteToolStripMenuItem.Click += new System.EventHandler(this.borrarClienteToolStripMenuItem_Click);
-            // 
-            // Form2
+            // FormPantallaPrincipal
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,12 +247,13 @@
             this.Controls.Add(this.boton_Salir);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(764, 624);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(764, 624);
-            this.Name = "Form2";
+            this.Name = "FormPantallaPrincipal";
             this.Text = "Tienda Buceo v1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
