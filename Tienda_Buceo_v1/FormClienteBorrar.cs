@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace Tienda_Buceo_v1
         MySqlDataReader resultado;
 
         ListViewItem item1;
+
+        int numeroClienteFoto = 0;
 
         public FormClienteBorrar(FormPantallaPrincipal F)
         {
@@ -104,7 +107,11 @@ namespace Tienda_Buceo_v1
 
             button_darDeBaja.Enabled = false;
 
-            pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
+            try
+            {
+                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
+            }
+            catch { }
         }
 
 
@@ -113,7 +120,6 @@ namespace Tienda_Buceo_v1
             Close();
             borrarDatos();
             formPantallaInicial.Show();
-            
         }
 
         private void textoAMayusculas()
@@ -142,25 +148,24 @@ namespace Tienda_Buceo_v1
 
         private void insertarFoto()
         {
-            int numeroClienteFoto;
             if (textBox_numCliente.Text == "")
             {
-                numeroClienteFoto = 0;
+                numeroClienteFoto = Int32.Parse(listView1.Items[0].SubItems[0].Text);
             }
             else
             {
                 numeroClienteFoto = Int32.Parse(textBox_numCliente.Text);
             }
 
+            String path = Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png";
             try
             {
-                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png");
-
+                pictureBox1.Image = new Bitmap(path);
             }
             catch
             {
                 pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
-            }
+            }    
         }
 
         private void boton_Buscar_Click(object sender, EventArgs e)
@@ -172,9 +177,6 @@ namespace Tienda_Buceo_v1
             {
                 // Pasamos todos los campos a mayusculas.
                 textoAMayusculas();
-
-                try { pictureBox1.Image = new Bitmap(@"\Fotos\0.png"); }
-                catch { }
 
                 // Aqui hariamos la consulta.
                 sentenciaSQL = "SELECT * FROM sql27652.clientes WHERE ";
@@ -269,12 +271,13 @@ namespace Tienda_Buceo_v1
                         int datoAuxiliar = Int32.Parse(resultado["titulacion"].ToString());
                         switch (datoAuxiliar)
                         {
-                            case 0: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
-                            case 1: item1.SubItems.Add("OPEN WATER DIVER"); break;
-                            case 2: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
-                            case 3: item1.SubItems.Add("RESCUE DIVER"); break;
-                            case 4: item1.SubItems.Add("DIVEMASTER"); break;
-                            case 5: item1.SubItems.Add("INSTRUCTOR"); break;
+                            case 1: item1.SubItems.Add("DISCOVERY SCUBA DIVER"); break;
+                            case 2: item1.SubItems.Add("OPEN WATER DIVER"); break;
+                            case 3: item1.SubItems.Add("ADVANCE OPEN WATER DIVER"); break;
+                            case 4: item1.SubItems.Add("RESCUE DIVER"); break;
+                            case 5: item1.SubItems.Add("DIVEMASTER"); break;
+                            case 6: item1.SubItems.Add("INSTRUCTOR"); break;
+                            case 0: item1.SubItems.Add("SIN TITULACION"); break;
                             default: item1.SubItems.Add("SIN TITULACION"); break;
                         }
 
@@ -288,24 +291,28 @@ namespace Tienda_Buceo_v1
                         {
                             button_darDeBaja.Enabled = true;
                             insertarFoto();
+                            
+
+                            // Almacenamos el numero de cliente.
+                            numeroClienteFoto = Int32.Parse(listView1.Items[0].SubItems[0].Text.ToString());
                         }
                     }
                     else
                     {
                         label2.Text = "No se ha encontrado ningún resultado";
-                    }
-                    conexion.Close();
+                    }   
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
                 }
-            
-            
-            }else
+            }
+            else
             {
                 MessageBox.Show("Error: No se ha insertado ningun dato de busqueda");
             }
+
+            conexion.Close();
         }
 
         private void boton_darDeBaja_Click(object sender, EventArgs e)
@@ -319,19 +326,29 @@ namespace Tienda_Buceo_v1
                 formClienteBorrarAviso = new FormClienteBorrarAviso(this);
                 formClienteBorrarAviso.StartPosition = FormStartPosition.CenterScreen;
                 formClienteBorrarAviso.Show();
-            }else
+            }
+            else
             {
                 MessageBox.Show("Error: No se ha insertado ningun dato a eliminar");
             }
         }
 
-        public void dardeBaja() 
+        public void dardeBaja()
         {
-            // Lo primero que vamos a hacer es pasar todos los campos a mayusculas.
-            textoAMayusculas();
-
-            try { pictureBox1.Image = new Bitmap(@"\Fotos\0.png"); }
+            try
+            {
+                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
+            }
             catch { }
+
+            GC.Collect();
+
+            buscarYBorrarUsuario();
+            
+        }
+
+        private void buscarYBorrarUsuario()
+        {
 
             // Aqui hariamos la consulta.
             sentenciaSQL = "DELETE FROM sql27652.clientes WHERE ";
@@ -399,7 +416,6 @@ namespace Tienda_Buceo_v1
                         {
                             sentenciaSQL += columna + " = '" + campo + "'";
                         }
-
                     }
                 }
             }
@@ -411,23 +427,49 @@ namespace Tienda_Buceo_v1
                 comando = new MySqlCommand(sentenciaSQL, conexion);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">> Realizando la consulta: " + sentenciaSQL);
+                
+                borrarDatos();
+                borrarFotoEnDisco(); 
+
                 listView1.Items.Clear();
                 label2.Text = "Usuario dado de baja correctamente";
-                borrarDatos();
-                conexion.Close();
             }
             catch (Exception)
             {
                 Console.WriteLine("Se ha producido un error al realizar la consulta: " + sentenciaSQL);
+                MessageBox.Show("Error: Se ha producido un error al realizar la consulta.");
             }
-        
+            conexion.Close();
         }
 
-
+        /*
+         * Implementamos el click de boton borrar que llamra al método borrarDatos.
+         */ 
         private void boton_Borrar_Click(object sender, EventArgs e)
         {
-            borrarDatos();
+            borrarDatos();          
         }
-    }
+
+        private void borrarFotoEnDisco()
+        {
+            // Almacenamos la ruta de la foto.
+            String path = Application.StartupPath + "\\Fotos\\" + numeroClienteFoto + ".png";
+            
+            // Comprobamos si existe la ruta.
+            if (System.IO.File.Exists(path))
+            {
+                try
+                {
+                    // Intentamos eliminar el fichero que esta en esta ruta.
+                    System.IO.File.Delete(path);
+                }
+                catch
+                {
+                    // En el caso de no poder borrarlo mostramos un mensaje por pantalla.
+                    MessageBox.Show("Error: No se ha podido leer el fichero del disco.");
+                }
+            }
+        }
+    }  
 }
 

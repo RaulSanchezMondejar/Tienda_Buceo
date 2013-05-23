@@ -18,6 +18,8 @@ namespace Tienda_Buceo_v1
         FormSalirPrograma formularioSalir;
         FormClienteModificar formularioModificarCliente;
         FormClienteBorrar formularioBorrarCliente;
+        FormClienteEnvioMail formularioEnvioMail;
+        FormClienteHistorialMail formularioHistorialMail;
         
 
 
@@ -46,15 +48,6 @@ namespace Tienda_Buceo_v1
         {
             formularioEntrada.Close();
         }
-        /*
-        public void mostarPantallaAvisoBorrarCliente ()
-        {
-            // Abrimos el formulario de advertencia
-            formClienteBorrarAviso = new FormClienteBorrarAviso(this);
-            formClienteBorrarAviso.StartPosition = FormStartPosition.CenterScreen;
-            formClienteBorrarAviso.Show();
-        }
-         */
 
 
         private void boton_Salir_Click(object sender, EventArgs e)
@@ -146,6 +139,27 @@ namespace Tienda_Buceo_v1
         {
             //boton del menu
             borrarCliente();
+        }
+
+        private void envioMailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enviarCorreos();
+        }
+
+        private void enviarCorreos()
+        {
+            Hide();
+            formularioEnvioMail = new FormClienteEnvioMail(this);
+            formularioEnvioMail.StartPosition = FormStartPosition.CenterScreen;
+            formularioEnvioMail.Show();
+        }
+
+        private void historialMailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            formularioHistorialMail = new FormClienteHistorialMail(this);
+            formularioHistorialMail.StartPosition = FormStartPosition.CenterScreen;
+            formularioHistorialMail.Show();
         }
     }
 }

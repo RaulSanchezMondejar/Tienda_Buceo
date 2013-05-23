@@ -48,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormClienteHistorialMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClienteHistorialMail.Designer.cs">
+      <DependentUpon>FormClienteHistorialMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormClienteBorrarAviso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormClienteBorrarAviso.Designer.cs">
       <DependentUpon>FormClienteBorrarAviso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClienteEnvioMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClienteEnvioMail.Designer.cs">
+      <DependentUpon>FormClienteEnvioMail.cs</DependentUpon>
     </Compile>
     <Compile Include="FormClienteModificar.cs">
       <SubType>Form</SubType>
@@ -98,8 +110,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormClienteHistorialMail.resx">
+      <DependentUpon>FormClienteHistorialMail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormClienteBorrarAviso.resx">
       <DependentUpon>FormClienteBorrarAviso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClienteEnvioMail.resx">
+      <DependentUpon>FormClienteEnvioMail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClienteModificar.resx">
       <DependentUpon>FormClienteModificar.cs</DependentUpon>

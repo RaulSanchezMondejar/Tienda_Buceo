@@ -44,6 +44,8 @@
             this.borrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.envioMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,7 +179,9 @@
             this.modificarClienteToolStripMenuItem,
             this.borrarClienteToolStripMenuItem,
             this.busquedaComprasToolStripMenuItem,
-            this.nuevaCompraToolStripMenuItem});
+            this.nuevaCompraToolStripMenuItem,
+            this.envioMailToolStripMenuItem,
+            this.historialMailToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.menuToolStripMenuItem.Text = "MENU";
@@ -230,6 +234,22 @@
             this.nuevaCompraToolStripMenuItem.Text = "Nueva Compra";
             this.nuevaCompraToolStripMenuItem.Click += new System.EventHandler(this.nuevaCompraToolStripMenuItem_Click);
             // 
+            // envioMailToolStripMenuItem
+            // 
+            this.envioMailToolStripMenuItem.Name = "envioMailToolStripMenuItem";
+            this.envioMailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.envioMailToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.envioMailToolStripMenuItem.Text = "Envio Mail";
+            this.envioMailToolStripMenuItem.Click += new System.EventHandler(this.envioMailToolStripMenuItem_Click);
+            // 
+            // historialMailToolStripMenuItem
+            // 
+            this.historialMailToolStripMenuItem.Name = "historialMailToolStripMenuItem";
+            this.historialMailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.historialMailToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.historialMailToolStripMenuItem.Text = "Historial Mail";
+            this.historialMailToolStripMenuItem.Click += new System.EventHandler(this.historialMailToolStripMenuItem_Click);
+            // 
             // FormPantallaPrincipal
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -279,5 +299,7 @@
         private System.Windows.Forms.ToolStripMenuItem busquedaComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaCompraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrarClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem envioMailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historialMailToolStripMenuItem;
     }
 }

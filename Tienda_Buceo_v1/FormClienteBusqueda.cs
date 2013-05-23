@@ -113,7 +113,7 @@ namespace Tienda_Buceo_v1
 
             try
             {
-                pictureBox1.Image = new Bitmap(@"\Fotos\0.png");
+                pictureBox1.Image = new Bitmap(Application.StartupPath + "\\Fotos\\0.png");
             }
             catch { } 
         }
@@ -347,7 +347,7 @@ namespace Tienda_Buceo_v1
             int numeroClienteFoto;
             if (textBox_numCliente.Text == "")
             {
-                numeroClienteFoto = 0;
+                numeroClienteFoto = Int32.Parse(listView1.Items[0].SubItems[0].Text);
             }
             else
             {
