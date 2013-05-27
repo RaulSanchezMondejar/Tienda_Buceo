@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace Tienda_Buceo_v1
 {
-    public partial class FormClienteBorrarAviso : Form
+    public partial class FormCompraNuevaAviso : Form
     {
-        FormClienteBorrar formClienteBorrar;
+        //FormPantallaPrincipal formPantallaInicial;
+        FormCompraNueva formCompraNueva;
 
 
-        public FormClienteBorrarAviso(FormClienteBorrar F)
+        public FormCompraNuevaAviso(FormCompraNueva F)
         {
             InitializeComponent();
 
-            formClienteBorrar = F;
+            formCompraNueva = F;
         }
 
 
@@ -32,7 +33,7 @@ namespace Tienda_Buceo_v1
         {
             // Ejecutamos la orden de borrar.
             Hide();
-            formClienteBorrar.dardeBaja();
+            formCompraNueva.realizarInsercionTabla();
         }
     }
 }

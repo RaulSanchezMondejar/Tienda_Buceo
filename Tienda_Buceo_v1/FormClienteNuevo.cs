@@ -175,11 +175,11 @@ namespace Tienda_Buceo_v1
                             }
                             if (textBox_telefonoFijo.Text.ToString().Length == 0)
                             {
-                                textBox_telefonoFijo.Text = "null";
+                                textBox_telefonoFijo.Text = "0";
                             }
                             if (textBox_telefonoMovil.Text.ToString().Length == 0)
                             {
-                                textBox_telefonoMovil.Text = "null";
+                                textBox_telefonoMovil.Text = "0";
                             }
                             if (textBox_correoElectronico.Text.ToString().Length == 0)
                             {

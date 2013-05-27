@@ -48,6 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCompraHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompraHistorial.Designer.cs">
+      <DependentUpon>FormCompraHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompraNuevaAviso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompraNuevaAviso.Designer.cs">
+      <DependentUpon>FormCompraNuevaAviso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompraNueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompraNueva.Designer.cs">
+      <DependentUpon>FormCompraNueva.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormClienteHistorialMail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +128,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCompraHistorial.resx">
+      <DependentUpon>FormCompraHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompraNuevaAviso.resx">
+      <DependentUpon>FormCompraNuevaAviso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompraNueva.resx">
+      <DependentUpon>FormCompraNueva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormClienteHistorialMail.resx">
       <DependentUpon>FormClienteHistorialMail.cs</DependentUpon>
     </EmbeddedResource>

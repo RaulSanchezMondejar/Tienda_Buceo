@@ -20,6 +20,8 @@ namespace Tienda_Buceo_v1
         FormClienteBorrar formularioBorrarCliente;
         FormClienteEnvioMail formularioEnvioMail;
         FormClienteHistorialMail formularioHistorialMail;
+        FormCompraNueva formularioCompraNueva;
+        FormCompraHistorial formularioCompraHistorial;
         
 
 
@@ -127,17 +129,32 @@ namespace Tienda_Buceo_v1
 
         private void busquedaComprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            historialComrpas();
+        }
 
+        private void historialComrpas()
+        {
+            Hide();
+            formularioCompraHistorial = new FormCompraHistorial(this);
+            formularioCompraHistorial.StartPosition = FormStartPosition.CenterScreen;
+            formularioCompraHistorial.Show();
         }
 
         private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            nuevaCompra();
+        }
 
+        private void nuevaCompra()
+        {
+            Hide();
+            formularioCompraNueva = new FormCompraNueva(this);
+            formularioCompraNueva.StartPosition = FormStartPosition.CenterScreen;
+            formularioCompraNueva.Show();
         }
 
         private void borrarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //boton del menu
             borrarCliente();
         }
 
@@ -160,6 +177,16 @@ namespace Tienda_Buceo_v1
             formularioHistorialMail = new FormClienteHistorialMail(this);
             formularioHistorialMail.StartPosition = FormStartPosition.CenterScreen;
             formularioHistorialMail.Show();
+        }
+
+        private void boton_nuevaCompra_Click(object sender, EventArgs e)
+        {
+            nuevaCompra();
+        }
+
+        private void boton_busquedaCompras_Click(object sender, EventArgs e)
+        {
+            historialComrpas();
         }
     }
 }

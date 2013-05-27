@@ -116,6 +116,7 @@
             this.boton_busquedaCompras.TabIndex = 3;
             this.boton_busquedaCompras.Text = "BUSQUEDA COMPRAS";
             this.boton_busquedaCompras.UseVisualStyleBackColor = false;
+            this.boton_busquedaCompras.Click += new System.EventHandler(this.boton_busquedaCompras_Click);
             // 
             // boton_nuevaCompra
             // 
@@ -133,6 +134,7 @@
             this.boton_nuevaCompra.TabIndex = 4;
             this.boton_nuevaCompra.Text = "NUEVA COMPRA";
             this.boton_nuevaCompra.UseVisualStyleBackColor = false;
+            this.boton_nuevaCompra.Click += new System.EventHandler(this.boton_nuevaCompra_Click);
             // 
             // label_usuario
             // 
